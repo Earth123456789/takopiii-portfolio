@@ -1,103 +1,152 @@
+import RotatingText from "@/components/RotatingText";
+import Aurora from "@/components/Aurora";
+import CardSwap, { Card } from "@/components/CardSwap";
 import Image from "next/image";
+import { MarqueeTech } from "@/components/marquee_tech";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const educationData = [
+    {
+      school: "Triamudomsuksanomklao School",
+      period: "2016 - 2022",
+      detail: "Math - Science - Computer",
+      image: "/images/tun.png",
+    },
+    {
+      school: `King Mongkut's Institute of Technology Ladkrabang`,
+      period: "2022 - Now",
+      detail: "School of Information Technology",
+      image: "/images/it.webp",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <main className="w-full min-h-screen">
+      {/* Galaxy background */}
+      <div className="fixed inset-0 -z-10">
+        <Aurora
+          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
+        />
+      </div>
+
+      {/* Intro Section */}
+      <section className="flex flex-col items-center justify-center text-center w-full min-h-[100vh] px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="max-w-6xl mx-auto">
+          {/* Main heading */}
+          <article className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+            <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white">
+              {`I'm`}
+            </p>
+            <RotatingText
+              texts={[
+                "Frontend Developer",
+                "Backend Developer", 
+                "Full Stack Developer",
+                "Freelancer",
+              ]}
+              mainClassName="px-2 sm:px-3 bg-[#A91D3A]/50 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold rounded-lg select-none overflow-hidden py-1 sm:py-2 justify-center"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </article>
+
+          {/* Subtitle */}
+          <article className="max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white opacity-70 leading-relaxed">
+              Hello! My Name is Vipat Choknantawong. You can call me Takopiii.
+            </p>
+          </article>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            {/* Text content */}
+            <div className="text-center lg:text-left lg:flex-shrink-0 lg:max-w-md xl:max-w-lg">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold mb-4 sm:mb-6">
+                My Education
+              </h2>
+              <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
+                Where I learned, grew, and developed my abilities.
+              </p>
+            </div>
+            
+            {/* Cards container */}
+            <div className="relative w-full lg:flex-1 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
+              <CardSwap 
+                cardDistance={60} 
+                verticalDistance={70} 
+                delay={5000} 
+                pauseOnHover={true}
+              >
+                {educationData.map((edu, index) => (
+                  <Card 
+                    key={index} 
+                    className="p-4 sm:p-6 flex flex-col items-center gap-3 sm:gap-4 text-center backdrop-blur-sm"
+                  >
+                    <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold leading-tight">
+                      {edu.school}
+                    </h3>
+                    <p className="text-[#A91D3A] font-medium text-sm sm:text-base">
+                      {edu.period}
+                    </p>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                      {edu.detail}
+                    </p>
+                    <div className="mt-2 sm:mt-4">
+                      <Image
+                        src={edu.image}
+                        alt={edu.school}
+                        width={200}
+                        height={200}
+                        className="rounded-lg object-contain w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px]"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </Card>
+                ))}
+              </CardSwap>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Stack Section */}
+      <section className="flex flex-col py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="text-center lg:text-left mb-8 sm:mb-12">
+            <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0">
+              Technologies and tools I work with to bring ideas to life.
+            </p>
+          </div>
+          <div className="w-full">
+            <MarqueeTech />
+          </div>
+        </div>
+      </section>
+
+      {/* Additional sections can be added here */}
+      <section className="h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-white text-8xl sm:text-8xl font-extrabold">
+            More content coming soon...
+          </p>
+        </div>
+      </section>
+    </main>
   );
 }
