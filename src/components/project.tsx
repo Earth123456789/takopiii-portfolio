@@ -76,7 +76,7 @@ const Project = () => {
                         All My Projects
                     </h2>
                     <p className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0">
-                        Showcasing my work and the technologies I've mastered through real-world projects.
+                        {"Showcasing my work and the technologies I've mastered through real-world projects."}
                     </p>
                 </div>
 
