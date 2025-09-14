@@ -3,20 +3,35 @@ import Aurora from "@/components/Aurora";
 import CardSwap, { Card } from "@/components/CardSwap";
 import Image from "next/image";
 import { MarqueeTech } from "@/components/marquee_tech";
+import Project from "@/components/project";
 
 export default function Home() {
   const educationData = [
     {
-      school: "Triamudomsuksanomklao School",
-      period: "2016 - 2022",
-      detail: "Math - Science - Computer",
-      image: "/images/tun.png",
+      title: `Triamudomsuksanomklao School`,
+      period: `2016 - 2022`,
+      detail: `Math - Science - Computer`,
+      image: `/images/tun.png`,
     },
     {
-      school: `King Mongkut's Institute of Technology Ladkrabang`,
-      period: "2022 - Now",
-      detail: "School of Information Technology",
-      image: "/images/it.webp",
+      title: `King Mongkut's Institute of Technology Ladkrabang`,
+      period: `2022 - Now`,
+      detail: `School of Information Technology`,
+      image: `/images/it.webp`,
+    },
+
+    {
+      title: `It Open House 2024`,
+      period: `Nov 2024`,
+      detail: `Frontend Developer`,
+      image: `/images/openhouse.png`,
+    },
+
+    {
+      title: `Edvisory`,
+      period: `2022 - Now`,
+      detail: `Internship Frontend Developer`,
+      image: `/images/edvisory.png`,
     },
   ];
 
@@ -33,7 +48,7 @@ export default function Home() {
       </div>
 
       {/* Intro Section */}
-      <section className="flex flex-col items-center justify-center text-center w-full min-h-[100vh] px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+      <section className="flex flex-col items-center justify-center text-center w-full min-h-[100vh] px-4 sm:px-6 lg:px-8 py-12 sm:py-20" id="about">
         <div className="max-w-6xl mx-auto">
           {/* Main heading */}
           <article className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
@@ -43,7 +58,7 @@ export default function Home() {
             <RotatingText
               texts={[
                 "Frontend Developer",
-                "Backend Developer", 
+                "Backend Developer",
                 "Full Stack Developer",
                 "Freelancer",
               ]}
@@ -69,45 +84,45 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8">
+      <section className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8" id="educate">
         <div className="w-full max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             {/* Text content */}
             <div className="text-center lg:text-left lg:flex-shrink-0 lg:max-w-md xl:max-w-lg">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold mb-4 sm:mb-6">
-                My Education
+                My Education & Experience
               </h2>
               <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
                 Where I learned, grew, and developed my abilities.
               </p>
             </div>
-            
+
             {/* Cards container */}
             <div className="relative w-full lg:flex-1 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
-              <CardSwap 
-                cardDistance={60} 
-                verticalDistance={70} 
-                delay={5000} 
+              <CardSwap
+                cardDistance={60}
+                verticalDistance={70}
+                delay={5000}
                 pauseOnHover={true}
               >
-                {educationData.map((edu, index) => (
-                  <Card 
-                    key={index} 
+                {educationData.map((exper, index) => (
+                  <Card
+                    key={index}
                     className="p-4 sm:p-6 flex flex-col items-center gap-3 sm:gap-4 text-center backdrop-blur-sm"
                   >
                     <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold leading-tight">
-                      {edu.school}
+                      {exper.title}
                     </h3>
-                    <p className="text-[#A91D3A] font-medium text-sm sm:text-base">
-                      {edu.period}
+                    <p className="text-[#ff9cb0] font-bold text-sm sm:text-base">
+                      {exper.period}
                     </p>
                     <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                      {edu.detail}
+                      {exper.detail}
                     </p>
                     <div className="mt-2 sm:mt-4">
                       <Image
-                        src={edu.image}
-                        alt={edu.school}
+                        src={exper.image}
+                        alt={exper.title}
                         width={200}
                         height={200}
                         className="rounded-lg object-contain w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px]"
@@ -123,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* Technology Stack Section */}
-      <section className="flex flex-col py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8">
+      <section className="flex flex-col py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8" id="stack">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center lg:text-left mb-8 sm:mb-12">
             <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
@@ -139,14 +154,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Additional sections can be added here */}
-      <section className="h-[50vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-white text-8xl sm:text-8xl font-extrabold">
-            More content coming soon...
-          </p>
-        </div>
+      {/* Projects Section */}
+      <section id="project">
+        <Project />
       </section>
+
+      {/* Coming Soon Message */}
+      <div className="text-center mt-16 sm:mt-20" id="activity" >
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-white/10">
+          <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+            More Content Coming Soon...
+          </h3>
+        </div>
+      </div>
     </main>
   );
 }

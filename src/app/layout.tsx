@@ -8,25 +8,15 @@ const items = [
     label: "About",
     bgColor: "linear-gradient(135deg, #A91D3A, #C72C41, #E94560)",
     textColor: "#fff",
-    links: [{ label: "Me", href: "/about/company", ariaLabel: "About Me" }],
-  },
-  {
-    label: "Projects",
-    bgColor: "linear-gradient(135deg, #8C1C32, #A91D3A, #C72C41)",
-    textColor: "#fff",
     links: [
-      {
-        label: "Featured",
-        href: "/projects/featured",
-        ariaLabel: "Featured Projects",
-      },
-      {
-        label: "Case Studies",
-        href: "/projects/case-studies",
-        ariaLabel: "Project Case Studies",
-      },
+      { label: "Me", href: "#", ariaLabel: "About Me" },
+      { label: "Education", href: "#educate", ariaLabel: "About Education" },
+      { label: "Tech Stack", href: "#stack", ariaLabel: "About Tech Stack" },
+      { label: "Project", href: "#project", ariaLabel: "About Project" },
+      { label: "Activity", href: "#activity", ariaLabel: "About Activity" },
     ],
   },
+
   {
     label: "Contact",
     bgColor: "linear-gradient(135deg, #6E1423, #A91D3A, #E94560)",
