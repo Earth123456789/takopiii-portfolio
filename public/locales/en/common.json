@@ -1,0 +1,48 @@
+{
+  "navigation": {
+    "about": "About",
+    "education": "Education",
+    "certificates": "Certificates",
+    "techStack": "Tech Stack",
+    "projects": "Projects",
+    "activity": "Activity",
+    "contact": "Contact"
+  },
+  "hero": {
+    "im": "I'm",
+    "frontendDeveloper": "Frontend Developer",
+    "backendDeveloper": "Backend Developer",
+    "fullStackDeveloper": "Full Stack Developer",
+    "freelancer": "Freelancer",
+    "greeting": "Hello! My Name is Vipat Choknantawong. You can call me Takopiii."
+  },
+  "education": {
+    "title": "My Education",
+    "description": "Where I learned, grew, and developed my abilities.",
+    "triamudom": "Triamudomsuksanomklao School",
+    "triamudomPeriod": "2016 - 2022",
+    "triamudomDetail": "Math - Science - Computer",
+    "kmitl": "King Mongkut's Institute of Technology Ladkrabang",
+    "kmitlPeriod": "2022 - Now",
+    "kmitlDetail": "School of Information Technology Bachelor's Degree",
+    "status": {
+      "success": "Success",
+      "inProgress": "In Progress"
+    }
+  },
+  "certificates": {
+    "title": "My Certificates",
+    "description": "Professional certifications and achievements that validate my skills and knowledge."
+  },
+  "techStack": {
+    "title": "Technology Stack",
+    "description": "Technologies and tools I work with to bring ideas to life."
+  },
+  "projects": {
+    "title": "All My Projects",
+    "description": "Showcasing my work and the technologies I've mastered through real-world projects."
+  },
+  "comingSoon": {
+    "title": "More Content Coming Soon..."
+  }
+}

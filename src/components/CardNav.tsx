@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useMemo, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GoArrowUpRight } from "react-icons/go";
+import { useLanguage } from "@/contexts/LanguageContext";
+import Image from "next/image";
 
 type CardNavLink = {
   label: string;
@@ -35,7 +37,6 @@ gsap.registerPlugin(ScrollTrigger);
 const CardNav: React.FC<CardNavProps> = ({
   logo,
   logoAlt = "Logo",
-  items,
   className = "",
   ease = "power3.out",
   baseColor = "#fff",
@@ -43,12 +44,52 @@ const CardNav: React.FC<CardNavProps> = ({
   buttonBgColor,
   buttonTextColor,
 }) => {
+  const { t } = useLanguage();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [screenSize, setScreenSize] = useState({ width: 0, isMobile: false, isTablet: false });
   const navRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+
+  // Create translated navigation items
+  const translatedItems = useMemo(() => [
+    {
+      label: t('navigation.about'),
+      bgColor: "linear-gradient(135deg, #A91D3A, #C72C41, #E94560)",
+      textColor: "#fff",
+      links: [
+        { label: t('navigation.about'), href: "#about", ariaLabel: "About Me" },
+        { label: t('navigation.education'), href: "#educate", ariaLabel: "About Education" },
+        { label: t('navigation.techStack'), href: "#stack", ariaLabel: "About Tech Stack" },
+        { label: t('navigation.projects'), href: "#project", ariaLabel: "About Projects" },
+        { label: t('navigation.certificates'), href: "#certificates", ariaLabel: "About Certificates" },
+        { label: t('navigation.activity'), href: "#activity", ariaLabel: "About Activities" },
+      ],
+    },
+    {
+      label: t('navigation.contact'),
+      bgColor: "linear-gradient(135deg, #6E1423, #A91D3A, #E94560)",
+      textColor: "#fff",
+      links: [
+        {
+          label: "Email",
+          href: "mailto:vipat.choknantawong@gmail.com",
+          ariaLabel: "Send email to Vipat",
+        },
+        {
+          label: "Facebook",
+          href: "https://www.facebook.com/vipat.choknantawong",
+          ariaLabel: "Visit Facebook profile",
+        },
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/earth-vipat-a87b092a5/",
+          ariaLabel: "Visit LinkedIn profile",
+        },
+      ],
+    },
+  ], [t]);
 
   // Screen size detection
   useLayoutEffect(() => {
@@ -66,7 +107,7 @@ const CardNav: React.FC<CardNavProps> = ({
     return () => window.removeEventListener('resize', updateScreenSize);
   }, []);
 
-  const calculateHeight = () => {
+  const calculateHeight = useCallback(() => {
     const navEl = navRef.current;
     if (!navEl) return 280;
 
@@ -85,7 +126,7 @@ const CardNav: React.FC<CardNavProps> = ({
         contentEl.style.position = "static";
         contentEl.style.height = "auto";
 
-        contentEl.offsetHeight;
+        void contentEl.offsetHeight;
 
         const topBar = 52;
         const padding = 12;
@@ -103,9 +144,9 @@ const CardNav: React.FC<CardNavProps> = ({
       return 270;
     }
     return 300;
-  };
+  }, [screenSize]);
 
-  const createTimeline = () => {
+  const createTimeline = useCallback(() => {
     const navEl = navRef.current;
     if (!navEl) return null;
 
@@ -136,7 +177,7 @@ const CardNav: React.FC<CardNavProps> = ({
     );
 
     return tl;
-  };
+  }, [screenSize, calculateHeight, ease, translatedItems]);
 
   useLayoutEffect(() => {
     if (!navRef.current) return;
@@ -162,7 +203,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
-  }, [ease, items, screenSize]);
+  }, [ease, translatedItems, screenSize, createTimeline]);
 
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -189,9 +230,9 @@ const CardNav: React.FC<CardNavProps> = ({
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isExpanded, screenSize]);
+  }, [isExpanded, screenSize, calculateHeight, createTimeline]);
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     const tl = tlRef.current;
     if (!tl) return;
     if (!isExpanded) {
@@ -203,7 +244,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
       tl.reverse();
     }
-  };
+  }, [isExpanded]);
 
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
@@ -221,7 +262,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [screenSize.isMobile, isExpanded]);
+  }, [screenSize.isMobile, isExpanded, toggleMenu]);
 
   const responsiveConfig = {
     container: {
@@ -300,10 +341,13 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <img 
+            <Image 
               src={logo} 
               alt={logoAlt} 
+              width={28}
+              height={28}
               className={`logo ${responsiveConfig.logo.size} object-contain`}
+              priority
             />
           </div>
 
@@ -318,7 +362,7 @@ const CardNav: React.FC<CardNavProps> = ({
             className={`card-nav-cta-button ${responsiveConfig.button.display} border-0 rounded-[calc(0.75rem-0.2rem)] ${responsiveConfig.button.padding} h-full font-medium cursor-pointer transition-all duration-300 hover:opacity-80 hover:scale-105 active:scale-95 py-2 ${responsiveConfig.button.text} whitespace-nowrap`}
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
-            {screenSize.isTablet ? "Resume" : "My Resume"}
+            {screenSize.isTablet ? t('common.resume') : t('common.myResume')}
           </button>
         </div>
 
@@ -330,7 +374,7 @@ const CardNav: React.FC<CardNavProps> = ({
           } md:flex-row md:items-end md:gap-[10px] lg:gap-[12px]`}
           aria-hidden={!isExpanded}
         >
-          {(items || []).slice(0, 3).map((item, idx) => (
+          {(translatedItems || []).slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
               className={`nav-card select-none relative flex flex-col gap-2 p-[12px_14px] sm:p-[14px_16px] rounded-[calc(0.6rem-0.1rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[50px] sm:min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%] backdrop-blur-sm border border-white/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg`}

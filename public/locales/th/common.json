@@ -1,0 +1,48 @@
+{
+  "navigation": {
+    "about": "เกี่ยวกับ",
+    "education": "การศึกษา",
+    "certificates": "ใบรับรอง",
+    "techStack": "เทคโนโลยี",
+    "projects": "โปรเจค",
+    "activity": "กิจกรรม",
+    "contact": "ติดต่อ"
+  },
+  "hero": {
+    "im": "ฉันคือ",
+    "frontendDeveloper": "Frontend",
+    "backendDeveloper": "Backend", 
+    "fullStackDeveloper": "Full Stack",
+    "freelancer": "Freelancer",
+    "greeting": "สวัสดี! ฉันชื่อ วิปัศย์ โชคนันทวงศ์ คุณเรียกฉันว่า takopiii ได้เลย"
+  },
+  "education": {
+    "title": "การศึกษาของฉัน",
+    "description": "ที่ที่ฉันเรียนรู้ เติบโต และพัฒนาความสามารถ",
+    "triamudom": "โรงเรียนเตรียมอุดมศึกษาน้อมเกล้า",
+    "triamudomPeriod": "2559 - 2565",
+    "triamudomDetail": "แผนการเรียน วิทย์-คณิต-คอมพิวเตอร์",
+    "kmitl": "สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+    "kmitlPeriod": "2565 - ปัจจุบัน",
+    "kmitlDetail": "คณะเทคโนโลยีสารสนเทศ ปริญญาตรี",
+    "status": {
+      "success": "สำเร็จ",
+      "inProgress": "กำลังศึกษา"
+    }
+  },
+  "certificates": {
+    "title": "ใบรับรองของฉัน",
+    "description": "ใบรับรองวิชาชีพและความสำเร็จที่ยืนยันทักษะและความรู้ของฉัน"
+  },
+  "techStack": {
+    "title": "เทคโนโลยีที่ใช้",
+    "description": "เทคโนโลยีและเครื่องมือที่ฉันใช้ในการสร้างไอเดียให้เป็นจริง"
+  },
+  "projects": {
+    "title": "โปรเจคทั้งหมดของฉัน",
+    "description": "แสดงผลงานและเทคโนโลยีที่ฉันเชี่ยวชาญผ่านโปรเจคจริง"
+  },
+  "comingSoon": {
+    "title": "เนื้อหาเพิ่มเติมกำลังจะมา..."
+  }
+}

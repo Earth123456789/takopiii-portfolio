@@ -1,39 +1,97 @@
+'use client'
+
 import RotatingText from "@/components/RotatingText";
 import Aurora from "@/components/Aurora";
-import CardSwap, { Card } from "@/components/CardSwap";
 import Image from "next/image";
 import { MarqueeTech } from "@/components/marquee_tech";
 import Project from "@/components/project";
+import ImageModal from "@/components/ImageModal";
+import Education from "@/components/Education";
+import Activity from "@/components/Activity";
+import Footer from "@/components/Footer";
+import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useFontSize } from "@/contexts/FontSizeContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+  const { getFontSizeClass } = useFontSize();
+  
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState<{
+    image: string;
+    title: string;
+    issuer: string;
+  } | null>(null);
+
+  const openModal = (cert: { image: string; title: string; issuer: string }) => {
+    setSelectedCertificate(cert);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCertificate(null);
+  };
+
   const educationData = [
     {
-      title: `Triamudomsuksanomklao School`,
-      period: `2016 - 2022`,
-      detail: `Math - Science - Computer`,
+      title: t('education.triamudom') as string,
+      period: t('education.triamudomPeriod') as string,
+      detail: t('education.triamudomDetail') as string,
       image: `/images/tun.png`,
+      status: t('education.status.success') as string,
     },
     {
-      title: `King Mongkut's Institute of Technology Ladkrabang`,
-      period: `2022 - Now`,
-      detail: `School of Information Technology`,
+      title: t('education.kmitl') as string,
+      period: t('education.kmitlPeriod') as string,
+      detail: t('education.kmitlDetail') as string,
       image: `/images/it.webp`,
-    },
-
-    {
-      title: `It Open House 2024`,
-      period: `Nov 2024`,
-      detail: `Frontend Developer`,
-      image: `/images/openhouse.png`,
-    },
-
-    {
-      title: `Edvisory`,
-      period: `2022 - Now`,
-      detail: `Internship Frontend Developer`,
-      image: `/images/edvisory.png`,
+      status: t('education.status.inProgress') as string,
     },
   ];
+
+  const certificateData = [
+    {
+      title: `ChatGPT for Developers`,
+      issuer: `BorntoDev Academy`,
+      image: `/images/certificate/borntodev-acdemy_ChatGPT for Developers_certifiacte.png`,
+    },
+    {
+      title: `Fundamental Web Dev with HTML5 & CSS3`,
+      issuer: `BorntoDev Academy`,
+      image: `/images/certificate/borntodev-acdemy_Lite _ Fundamental Web Dev with HTML5 & CSS3_certifiacte.png`,
+    },
+    {
+      title: `Cybersecurity Essentials`,
+      issuer: `Cisco Networking Academy`,
+      image: `/images/certificate/VipatChoknantawong-Cybersecurity Es-certificate.png`,
+    },
+    {
+      title: `NDG Linux Essentials`,
+      issuer: `Cisco Networking Academy`,
+      image: `/images/certificate/VipatChoknantawong-NDG Linux Essent-certificate.png`,
+    },
+    {
+      title: `Huawei Tech Essentials`,
+      issuer: `Huawei`,
+      image: `/images/certificate/huwei-tech-essentials.png`,
+    },
+    {
+      title: `42 Bangkok Student`,
+      issuer: `42 Bangkok`,
+      image: `/images/certificate/vchoknan@student.42bangkok.com.png`,
+    },
+  ];
+
+  const activityData = t('activity.items') as unknown as Array<{
+    title: string;
+    period: string;
+    role: string;
+    description: string;
+    type: 'academic' | 'event' | 'work';
+  }>;
 
   return (
     <main className="w-full min-h-screen">
@@ -52,17 +110,17 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           {/* Main heading */}
           <article className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
-            <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white">
-              {`I'm`}
+            <p className={getFontSizeClass("text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white")}>
+              {t('hero.im')}
             </p>
             <RotatingText
               texts={[
-                "Frontend Developer",
-                "Backend Developer",
-                "Full Stack Developer",
-                "Freelancer",
+                t('hero.frontendDeveloper') as string,
+                t('hero.backendDeveloper') as string,
+                t('hero.fullStackDeveloper') as string,
+                t('hero.freelancer') as string,
               ]}
-              mainClassName="px-2 sm:px-3 bg-[#A91D3A]/50 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold rounded-lg select-none overflow-hidden py-1 sm:py-2 justify-center"
+              mainClassName={getFontSizeClass("px-2 sm:px-3 bg-[#A91D3A]/50 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold rounded-lg select-none overflow-hidden py-1 sm:py-2 justify-center")}
               staggerFrom="last"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -76,76 +134,25 @@ export default function Home() {
 
           {/* Subtitle */}
           <article className="max-w-4xl mx-auto">
-            <p className="text-lg sm:text-xl lg:text-2xl text-white opacity-70 leading-relaxed">
-              Hello! My Name is Vipat Choknantawong. You can call me Takopiii.
+            <p className={getFontSizeClass("text-lg sm:text-xl lg:text-2xl text-white opacity-70 leading-relaxed")}>
+              {t('hero.greeting')}
             </p>
           </article>
         </div>
       </section>
 
       {/* Education Section */}
-      <section className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8" id="educate">
-        <div className="w-full max-w-7xl">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-            {/* Text content */}
-            <div className="text-center lg:text-left lg:flex-shrink-0 lg:max-w-md xl:max-w-lg">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold mb-4 sm:mb-6">
-                My Education & Experience
-              </h2>
-              <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
-                Where I learned, grew, and developed my abilities.
-              </p>
-            </div>
-
-            {/* Cards container */}
-            <div className="relative w-full lg:flex-1 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
-              <CardSwap
-                cardDistance={60}
-                verticalDistance={70}
-                delay={5000}
-                pauseOnHover={true}
-              >
-                {educationData.map((exper, index) => (
-                  <Card
-                    key={index}
-                    className="p-4 sm:p-6 flex flex-col items-center gap-3 sm:gap-4 text-center backdrop-blur-sm"
-                  >
-                    <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold leading-tight">
-                      {exper.title}
-                    </h3>
-                    <p className="text-[#ff9cb0] font-bold text-sm sm:text-base">
-                      {exper.period}
-                    </p>
-                    <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                      {exper.detail}
-                    </p>
-                    <div className="mt-2 sm:mt-4">
-                      <Image
-                        src={exper.image}
-                        alt={exper.title}
-                        width={200}
-                        height={200}
-                        className="rounded-lg object-contain w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px] xl:w-[200px] xl:h-[200px]"
-                        priority={index === 0}
-                      />
-                    </div>
-                  </Card>
-                ))}
-              </CardSwap>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Education educationData={educationData} />
 
       {/* Technology Stack Section */}
       <section className="flex flex-col py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8" id="stack">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center lg:text-left mb-8 sm:mb-12">
-            <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-              Technology Stack
+            <h2 className={getFontSizeClass("text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4")}>
+              {t('techStack.title')}
             </h2>
-            <p className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0">
-              Technologies and tools I work with to bring ideas to life.
+            <p className={getFontSizeClass("text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0")}>
+              {t('techStack.description')}
             </p>
           </div>
           <div className="w-full">
@@ -159,14 +166,82 @@ export default function Home() {
         <Project />
       </section>
 
-      {/* Coming Soon Message */}
-      <div className="text-center mt-16 sm:mt-20" id="activity" >
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-white/10">
-          <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-            More Content Coming Soon...
-          </h3>
+      {/* Certificates Section */}
+      <section className="flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20 w-full px-4 sm:px-6 lg:px-8 animate-in fade-in-0 slide-in-from-bottom-4 duration-1000" id="certificates">
+        <div className="w-full max-w-7xl">
+          <div className="text-center lg:text-left mb-12 sm:mb-16">
+            <h2 className={getFontSizeClass("text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4")}>
+              {t('certificates.title')}
+            </h2>
+            <p className={getFontSizeClass("text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0")}>
+              {t('certificates.description')}
+            </p>
+          </div>
+
+          {/* Certificate Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {certificateData.map((cert, index) => (
+              <div
+                key={index}
+                className="group relative bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#A91D3A]/20 animate-in fade-in-0 slide-in-from-bottom-4 duration-700"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Certificate Image */}
+                <div
+                  className="relative mb-4 overflow-hidden rounded-lg cursor-pointer"
+                  onClick={() => openModal(cert)}
+                >
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    width={300}
+                    height={200}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    priority={index < 3}
+                  />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Click to view full size
+                    </div>
+                  </div>
+                </div>
+
+                {/* Certificate Info */}
+                <div className="space-y-2">
+                  <h3 className="text-white text-lg sm:text-xl font-semibold leading-tight group-hover:text-[#ff9cb0] transition-colors duration-300">
+                    {cert.title}
+                  </h3>
+                  <p className="text-[#ff9cb0] font-medium text-sm sm:text-base">
+                    {cert.issuer}
+                  </p>
+                </div>
+
+                {/* Hover effect border */}
+                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-[#A91D3A]/50 transition-colors duration-300 pointer-events-none" />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Activity Section */}
+      <Activity activityData={activityData} />
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Image Modal */}
+      {selectedCertificate && (
+        <ImageModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          imageSrc={selectedCertificate.image}
+          imageAlt={selectedCertificate.title}
+          title={selectedCertificate.title}
+          issuer={selectedCertificate.issuer}
+        />
+      )}
     </main>
   );
 }
