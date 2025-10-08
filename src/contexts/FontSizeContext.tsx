@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type FontSize = 'small' | 'medium' | 'large';
 
@@ -12,87 +12,51 @@ interface FontSizeContextType {
 
 const FontSizeContext = createContext<FontSizeContextType | undefined>(undefined);
 
-export const useFontSize = () => {
-  const context = useContext(FontSizeContext);
-  if (context === undefined) {
-    throw new Error('useFontSize must be used within a FontSizeProvider');
-  }
-  return context;
-};
-
 interface FontSizeProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const FontSizeProvider: React.FC<FontSizeProviderProps> = ({ children }) => {
-  const [fontSize, setFontSize] = useState<FontSize>('medium');
+  const [fontSize, setFontSizeState] = useState<FontSize>('medium');
 
   useEffect(() => {
     // Load font size from localStorage on mount
     const savedFontSize = localStorage.getItem('fontSize') as FontSize;
     if (savedFontSize && ['small', 'medium', 'large'].includes(savedFontSize)) {
-      setFontSize(savedFontSize);
+      setFontSizeState(savedFontSize);
     }
   }, []);
 
-  const handleSetFontSize = (size: FontSize) => {
-    setFontSize(size);
+  const setFontSize = (size: FontSize) => {
+    setFontSizeState(size);
     localStorage.setItem('fontSize', size);
   };
 
   const getFontSizeClass = (baseClass: string) => {
-    // Apply global font size scaling
-    const globalSizeMap = {
-      small: 'text-sm',
-      medium: 'text-base', 
-      large: 'text-lg'
-    };
-
-    // If the class already has a text size, scale it
+    // Add font size modifier class
+    const fontSizeModifier = `font-size-${fontSize}`;
+    
+    // If the class already has a text size, add the modifier
     if (baseClass.includes('text-')) {
-      const sizeMap = {
-        small: baseClass.replace(/text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)/g, (match) => {
-          const sizeMap: { [key: string]: string } = {
-            'text-xs': 'text-xs',
-            'text-sm': 'text-xs',
-            'text-base': 'text-sm',
-            'text-lg': 'text-base',
-            'text-xl': 'text-lg',
-            'text-2xl': 'text-xl',
-            'text-3xl': 'text-2xl',
-            'text-4xl': 'text-3xl',
-            'text-5xl': 'text-4xl',
-            'text-6xl': 'text-5xl',
-          };
-          return sizeMap[match] || match;
-        }),
-        medium: baseClass,
-        large: baseClass.replace(/text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)/g, (match) => {
-          const sizeMap: { [key: string]: string } = {
-            'text-xs': 'text-sm',
-            'text-sm': 'text-base',
-            'text-base': 'text-lg',
-            'text-lg': 'text-xl',
-            'text-xl': 'text-2xl',
-            'text-2xl': 'text-3xl',
-            'text-3xl': 'text-4xl',
-            'text-4xl': 'text-5xl',
-            'text-5xl': 'text-6xl',
-            'text-6xl': 'text-7xl',
-          };
-          return sizeMap[match] || match;
-        }),
-      };
-      return sizeMap[fontSize];
+      return `${baseClass} ${fontSizeModifier}`;
     }
 
-    // If no text size specified, apply global size
-    return baseClass + ' ' + globalSizeMap[fontSize];
+    // If no text size specified, apply default with modifier
+    const defaultSize = fontSize === 'small' ? 'text-sm' : fontSize === 'large' ? 'text-lg' : 'text-base';
+    return `${defaultSize} ${fontSizeModifier}`;
   };
 
   return (
-    <FontSizeContext.Provider value={{ fontSize, setFontSize: handleSetFontSize, getFontSizeClass }}>
+    <FontSizeContext.Provider value={{ fontSize, setFontSize, getFontSizeClass }}>
       {children}
     </FontSizeContext.Provider>
   );
+};
+
+export const useFontSize = (): FontSizeContextType => {
+  const context = useContext(FontSizeContext);
+  if (context === undefined) {
+    throw new Error('useFontSize must be used within a FontSizeProvider');
+  }
+  return context;
 };

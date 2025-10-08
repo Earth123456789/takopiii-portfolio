@@ -181,6 +181,82 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Font size modifiers - only apply to elements without specific text size classes */
+  .font-size-small:not([class*="text-"]) {
+    font-size: 0.75rem !important; /* text-xs */
+  }
+  
+  .font-size-medium:not([class*="text-"]) {
+    font-size: 1rem !important; /* text-base */
+  }
+  
+  .font-size-large:not([class*="text-"]) {
+    font-size: 1.125rem !important; /* text-lg */
+  }
+  
+  /* Scale existing text classes */
+  .font-size-small.text-xs { font-size: 0.75rem !important; }
+  .font-size-small.text-sm { font-size: 0.75rem !important; }
+  .font-size-small.text-base { font-size: 0.875rem !important; }
+  .font-size-small.text-lg { font-size: 1rem !important; }
+  .font-size-small.text-xl { font-size: 1.125rem !important; }
+  .font-size-small.text-2xl { font-size: 1.25rem !important; }
+  .font-size-small.text-3xl { font-size: 1.5rem !important; }
+  .font-size-small.text-4xl { font-size: 1.875rem !important; }
+  .font-size-small.text-5xl { font-size: 2.25rem !important; }
+  .font-size-small.text-6xl { font-size: 3rem !important; }
+  
+  .font-size-medium.text-xs { font-size: 0.75rem !important; }
+  .font-size-medium.text-sm { font-size: 0.875rem !important; }
+  .font-size-medium.text-base { font-size: 1rem !important; }
+  .font-size-medium.text-lg { font-size: 1.125rem !important; }
+  .font-size-medium.text-xl { font-size: 1.25rem !important; }
+  .font-size-medium.text-2xl { font-size: 1.5rem !important; }
+  .font-size-medium.text-3xl { font-size: 1.875rem !important; }
+  .font-size-medium.text-4xl { font-size: 2.25rem !important; }
+  .font-size-medium.text-5xl { font-size: 3rem !important; }
+  .font-size-medium.text-6xl { font-size: 3.75rem !important; }
+  
+  .font-size-large.text-xs { font-size: 0.875rem !important; }
+  .font-size-large.text-sm { font-size: 1rem !important; }
+  .font-size-large.text-base { font-size: 1.125rem !important; }
+  .font-size-large.text-lg { font-size: 1.25rem !important; }
+  .font-size-large.text-xl { font-size: 1.5rem !important; }
+  .font-size-large.text-2xl { font-size: 1.875rem !important; }
+  .font-size-large.text-3xl { font-size: 2.25rem !important; }
+  .font-size-large.text-4xl { font-size: 3rem !important; }
+  .font-size-large.text-5xl { font-size: 3.75rem !important; }
+  .font-size-large.text-6xl { font-size: 4.5rem !important; }
+  
+  /* Responsive font size modifiers for elements without text classes */
+  @media (min-width: 640px) {
+    .font-size-small:not([class*="text-"]) {
+      font-size: 0.875rem !important; /* text-sm */
+    }
+    
+    .font-size-medium:not([class*="text-"]) {
+      font-size: 1.125rem !important; /* text-lg */
+    }
+    
+    .font-size-large:not([class*="text-"]) {
+      font-size: 1.25rem !important; /* text-xl */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .font-size-small:not([class*="text-"]) {
+      font-size: 1rem !important; /* text-base */
+    }
+    
+    .font-size-medium:not([class*="text-"]) {
+      font-size: 1.25rem !important; /* text-xl */
+    }
+    
+    .font-size-large:not([class*="text-"]) {
+      font-size: 1.5rem !important; /* text-2xl */
+    }
+  }
 }
 
 body {

@@ -17,7 +17,7 @@ const FontSizeSwitcher: React.FC = () => {
         }`}
         title="Small Font"
       >
-        <span className="text-sm font-bold">A⁻</span>
+        <span className="text-xs font-bold">A⁻</span>
       </button>
       <button
         onClick={() => setFontSize('medium')}
@@ -28,7 +28,7 @@ const FontSizeSwitcher: React.FC = () => {
         }`}
         title="Medium Font"
       >
-        <span className="text-sm font-bold">A</span>
+        <span className="text-base font-bold">A</span>
       </button>
       <button
         onClick={() => setFontSize('large')}
@@ -39,7 +39,7 @@ const FontSizeSwitcher: React.FC = () => {
         }`}
         title="Large Font"
       >
-        <span className="text-sm font-bold">A⁺</span>
+        <span className="text-lg font-bold">A⁺</span>
       </button>
     </div>
   );
