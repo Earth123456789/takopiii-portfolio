@@ -389,7 +389,7 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('th');
+  const [language, setLanguage] = useState<Language>('en');
 
   useEffect(() => {
     // Load language from localStorage on mount
