@@ -6,4 +6,5 @@ export interface ProjectItem {
   features: string[];
   technologies: string[];
   liveDemo: string;
+  featured?: boolean;
 }

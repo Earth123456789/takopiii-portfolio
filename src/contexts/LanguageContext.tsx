@@ -1,17 +1,21 @@
-'use client'
+"use client";
 
-import React, { createContext, useState, useEffect } from 'react';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { Language, LanguageContextType } from '@/types/context';
+import React, { createContext, useState, useEffect } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import {
+  Language,
+  LanguageContextType,
+  LanguageProviderProps,
+} from "@/types/context";
 
-export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+export const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
-interface LanguageProviderProps {
-  children: React.ReactNode;
-}
-
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage, isMounted] = useLocalStorage<Language>('language', 'en');
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({
+  children,
+}) => {
+  const [language, setLanguage] = useLocalStorage<Language>("language", "en");
   const [translations, setTranslations] = useState<Record<string, unknown>>({});
   const [loading, setLoading] = useState(true);
 
@@ -20,11 +24,11 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       setLoading(true);
       try {
         const response = await fetch(`/locales/${language}/common.json`);
-        if (!response.ok) throw new Error('Failed to load translations');
+        if (!response.ok) throw new Error("Failed to load translations");
         const data = await response.json();
         setTranslations(data);
       } catch (error) {
-        console.error('Error loading translations:', error);
+        console.error("Error loading translations:", error);
       } finally {
         setLoading(false);
       }
@@ -33,22 +37,25 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     loadTranslations();
   }, [language]);
 
-  const t = (key: string): string | string[] => {
-    if (loading || !translations) return key;
+  const t = React.useCallback(
+    (key: string): string | string[] => {
+      if (loading || !translations) return key;
 
-    const keys = key.split('.');
-    let value: unknown = translations;
-    
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = (value as Record<string, unknown>)[k];
-      } else {
-        return key;
+      const keys = key.split(".");
+      let value: unknown = translations;
+
+      for (const k of keys) {
+        if (value && typeof value === "object" && k in value) {
+          value = (value as Record<string, unknown>)[k];
+        } else {
+          return key;
+        }
       }
-    }
-    
-    return (value as string | string[]) || key;
-  };
+
+      return (value as string | string[]) || key;
+    },
+    [loading, translations],
+  );
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

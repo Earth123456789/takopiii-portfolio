@@ -14,7 +14,8 @@
     "backendDeveloper": "Backend Developer",
     "fullStackDeveloper": "Full Stack Developer",
     "freelancer": "Freelancer",
-    "greeting": "Hello! My Name is Vipat Choknantawong. You can call me Takopiii."
+    "greeting": "Hello! My Name is Vipat Choknantawong. You can call me Earth.",
+    "scrollDown": "Scroll Down to Explore"
   },
   "education": {
     "title": "My Education",
@@ -83,12 +84,7 @@
         "Multiple pose selection and practice modes",
         "Progress tracking and improvement analytics"
       ],
-      "technologies": [
-        "Next.js",
-        "Tailwind CSS",
-        "FastAPI",
-        "Python"
-      ],
+      "technologies": ["Next.js", "Tailwind CSS", "FastAPI", "Python"],
       "demo": "Demo"
     },
     "ticketBever": {
@@ -101,12 +97,7 @@
         "Secure payment processing with PromptPay (Python library)",
         "Built with Django for scalable backend support"
       ],
-      "technologies": [
-        "Django",
-        "Tailwind CSS",
-        "Google API",
-        "Chart.js"
-      ],
+      "technologies": ["Django", "Tailwind CSS", "Google API", "Chart.js"],
       "demo": "Demo"
     },
     "safeJai": {
@@ -120,12 +111,7 @@
         "Seamless API integration with backend team collaboration",
         "Thorough testing for system efficiency and reliability"
       ],
-      "technologies": [
-        "Next.js",
-        "Tailwind CSS",
-        "Scss",
-        "next-i18next"
-      ],
+      "technologies": ["Next.js", "Tailwind CSS", "Scss", "next-i18next"],
       "demo": "Demo"
     },
     "openhouse": {
@@ -139,12 +125,7 @@
         "Deployed on Vercel for fast and reliable hosting",
         "Designed as an interactive activity platform for high school students"
       ],
-      "technologies": [
-        "Next.js",
-        "Tailwind CSS",
-        "Shadcn",
-        "Zod"
-      ],
+      "technologies": ["Next.js", "Tailwind CSS", "Shadcn", "Zod"],
       "demo": "Demo"
     },
     "dsView": {
@@ -203,69 +184,91 @@
         "period": "January 2026 – June 2026",
         "role": "Internship Web Developer",
         "description": "Developed a monitoring Windows service for real-time visibility into service status and health | Maintained and improved features within the TMS (Transportation Management System) using .NET and Ext.js | Built a POC for Open Claw to explore system capabilities and integration patterns.",
-        "type": "work"
+        "type": "work",
+        "featured": true
       },
       {
         "title": "Teaching Assistant (TA) - Data Structure & Algorithm",
         "period": "November 2025 – March 2026",
         "role": "Teaching Assistant",
         "description": "Graded assignments and provided in-depth guidance on Data Structure & Algorithm in Lab (Python code) and exercise class.",
-        "type": "academic"
+        "type": "academic",
+        "featured": true
       },
       {
         "title": "Frontend Developer (Edvisory Co., Ltd.)",
         "period": "April 2025 - July 2025",
         "role": "Internship Frontend Developer",
         "description": "Developed and designed internationalization (i18n) system for website to support multilingual usage (Thai/English) using Next.js and next-i18next for translation management | Used Tailwind CSS and SCSS for UI/UX management to support Responsive Design and align with organization's main design.",
-        "type": "work"
+        "type": "work",
+        "featured": true
       },
       {
         "title": "Teaching Assistant (TA) - NoSQL Databases",
         "period": "November 2024 – March 2025",
         "role": "Teaching Assistant",
         "description": "Graded assignments and provided guidance for in-depth NoSQL study such as MongoDB, Cassandra, and Neo4j.",
-        "type": "academic"
+        "type": "academic",
+        "featured": false
       },
       {
         "title": "Teaching Assistant (TA) - Database System Concepts",
         "period": "July 2024 – November 2024",
         "role": "Teaching Assistant",
         "description": "Graded assignments and provided feedback to develop students' query writing skills (SQL).",
-        "type": "academic"
+        "type": "academic",
+        "featured": false
       },
       {
         "title": "Top 10 Huawei ICT Competition 2024-2025 Cloud Track National Round",
         "period": "2024 - 2025",
         "role": "Award",
         "description": "Won 1st Runner Up (Top 10) in the Huawei ICT Competition Thailand Round, Cloud Track.",
-        "type": "event"
+        "type": "event",
+        "featured": false
       },
       {
         "title": "Top 50 GOSOFT RETAIL TECH HACKATHON 2026",
         "period": "January 2026",
         "role": "Finalist",
         "description": "Reached the Top 50 Finalist in GOSOFT RETAIL TECH HACKATHON 2026.",
-        "type": "event"
+        "type": "event",
+        "featured": false
       },
       {
         "title": "Top 10 in Nextgen Mental Health with GDGoC x AMSA Hackathon",
         "period": "2024",
         "role": "Award",
         "description": "Participated in the hackathon and achieved Top 10 in the Nextgen Mental Health category. Pitched and developed an AI-driven solution designed to assist and care for patients with mental health issues, focusing on accessible and sustainable healthcare innovation.",
-        "type": "event"
+        "type": "event",
+        "featured": false
       },
       {
         "title": "NTU Hackathon Certificate",
         "period": "2024",
         "role": "Certificate",
         "description": "Participated in the NTU Hackathon and developed an interactive game specifically designed to support physical therapy for heatstroke patients. The project focused on making repetitive foot and ankle exercises more engaging, motivating, and enjoyable through gamification, ultimately encouraging patients to complete their rehabilitation routines effectively.",
-        "type": "event"
+        "type": "event",
+        "featured": false
       }
     ]
   },
   "common": {
     "demo": "Demo",
     "resume": "Resume",
-    "myResume": "My Resume"
+    "myResume": "My Resume",
+    "seeAll": "See All",
+    "showLess": "Show Less",
+    "featured": "Featured"
+  },
+  "footer": {
+    "name": "Vipat Choknantawong",
+    "role": "Full Stack Developer & Freelancer",
+    "description": "Passionate about creating innovative solutions and bringing ideas to life through technology.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followMe": "Follow Me",
+    "copyright": "© 2024 Vipat Choknantawong. All rights reserved.",
+    "madeWith": "Made with ❤️ using Next.js & Tailwind CSS"
   }
 }

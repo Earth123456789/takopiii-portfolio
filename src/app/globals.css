@@ -5,9 +5,12 @@
 
 /* Custom Font Face */
 @font-face {
-  font-family: 'Noto Sans Thai';
-  src: url('/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.woff2') format('woff2'),
-       url('/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.ttf') format('truetype');
+  font-family: "Noto Sans Thai";
+  src:
+    url("/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.woff2")
+      format("woff2"),
+    url("/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.ttf")
+      format("truetype");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -15,14 +18,26 @@
 
 /* Ensure fonts are loaded */
 * {
-  font-family: 'Noto Sans Thai', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    "Noto Sans Thai",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Noto Sans Thai', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+  --font-sans:
+    "Noto Sans Thai", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Courier New", monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -59,72 +74,72 @@
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
 }
 
 :root {
   --radius: 0.75rem;
-  --background: #FFF6DE;
+  --background: #fff6de;
   --foreground: oklch(0.205 0.04 240);
-  --card: #FFE394;
+  --card: #ffe394;
   --card-foreground: oklch(0.205 0.04 240);
-  --popover: #FFF6DE;
+  --popover: #fff6de;
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #F48F68;
-  --primary-foreground: #FFF6DE;
-  --secondary: #8BDFDD;
+  --primary: #f48f68;
+  --primary-foreground: #fff6de;
+  --secondary: #8bdfdd;
   --secondary-foreground: oklch(0.205 0.04 240);
-  --muted: #FFE394;
+  --muted: #ffe394;
   --muted-foreground: oklch(0.4 0.05 240);
-  --accent: #FFE394;
+  --accent: #ffe394;
   --accent-foreground: oklch(0.205 0.04 240);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.205 0.04 240 / 0.1);
   --input: oklch(0.205 0.04 240 / 0.05);
-  --ring: #F48F68;
-  --chart-1: #F48F68;
-  --chart-2: #8BDFDD;
-  --chart-3: #FFE394;
+  --ring: #f48f68;
+  --chart-1: #f48f68;
+  --chart-2: #8bdfdd;
+  --chart-3: #ffe394;
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #FFF6DE;
+  --sidebar: #fff6de;
   --sidebar-foreground: oklch(0.205 0.04 240);
-  --sidebar-primary: #F48F68;
-  --sidebar-primary-foreground: #FFF6DE;
-  --sidebar-accent: #FFE394;
+  --sidebar-primary: #f48f68;
+  --sidebar-primary-foreground: #fff6de;
+  --sidebar-accent: #ffe394;
   --sidebar-accent-foreground: oklch(0.205 0.04 240);
   --sidebar-border: oklch(0.205 0.04 240 / 0.1);
-  --sidebar-ring: #F48F68;
+  --sidebar-ring: #f48f68;
 }
 
 .dark {
@@ -162,10 +177,12 @@
 }
 
 @font-face {
-  font-family: 'NotoSansThai';
+  font-family: "NotoSansThai";
   src:
-    url('/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.woff2') format('woff2'),
-    url('/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.tff') format('truetype');
+    url("/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.woff2")
+      format("woff2"),
+    url("/fonts/NotoSansThai/NotoSansThai-VariableFont_wdth,wght.tff")
+      format("truetype");
   font-weight: 100 900;
   /* Variable font รองรับหลายความหนา */
   font-style: normal;
@@ -181,78 +198,138 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Font size modifiers - only apply to elements without specific text size classes */
   .font-size-small:not([class*="text-"]) {
     font-size: 0.75rem !important; /* text-xs */
   }
-  
+
   .font-size-medium:not([class*="text-"]) {
     font-size: 1rem !important; /* text-base */
   }
-  
+
   .font-size-large:not([class*="text-"]) {
     font-size: 1.125rem !important; /* text-lg */
   }
-  
+
   /* Scale existing text classes */
-  .font-size-small.text-xs { font-size: 0.75rem !important; }
-  .font-size-small.text-sm { font-size: 0.75rem !important; }
-  .font-size-small.text-base { font-size: 0.875rem !important; }
-  .font-size-small.text-lg { font-size: 1rem !important; }
-  .font-size-small.text-xl { font-size: 1.125rem !important; }
-  .font-size-small.text-2xl { font-size: 1.25rem !important; }
-  .font-size-small.text-3xl { font-size: 1.5rem !important; }
-  .font-size-small.text-4xl { font-size: 1.875rem !important; }
-  .font-size-small.text-5xl { font-size: 2.25rem !important; }
-  .font-size-small.text-6xl { font-size: 3rem !important; }
-  
-  .font-size-medium.text-xs { font-size: 0.75rem !important; }
-  .font-size-medium.text-sm { font-size: 0.875rem !important; }
-  .font-size-medium.text-base { font-size: 1rem !important; }
-  .font-size-medium.text-lg { font-size: 1.125rem !important; }
-  .font-size-medium.text-xl { font-size: 1.25rem !important; }
-  .font-size-medium.text-2xl { font-size: 1.5rem !important; }
-  .font-size-medium.text-3xl { font-size: 1.875rem !important; }
-  .font-size-medium.text-4xl { font-size: 2.25rem !important; }
-  .font-size-medium.text-5xl { font-size: 3rem !important; }
-  .font-size-medium.text-6xl { font-size: 3.75rem !important; }
-  
-  .font-size-large.text-xs { font-size: 0.875rem !important; }
-  .font-size-large.text-sm { font-size: 1rem !important; }
-  .font-size-large.text-base { font-size: 1.125rem !important; }
-  .font-size-large.text-lg { font-size: 1.25rem !important; }
-  .font-size-large.text-xl { font-size: 1.5rem !important; }
-  .font-size-large.text-2xl { font-size: 1.875rem !important; }
-  .font-size-large.text-3xl { font-size: 2.25rem !important; }
-  .font-size-large.text-4xl { font-size: 3rem !important; }
-  .font-size-large.text-5xl { font-size: 3.75rem !important; }
-  .font-size-large.text-6xl { font-size: 4.5rem !important; }
-  
+  .font-size-small.text-xs {
+    font-size: 0.75rem !important;
+  }
+  .font-size-small.text-sm {
+    font-size: 0.75rem !important;
+  }
+  .font-size-small.text-base {
+    font-size: 0.875rem !important;
+  }
+  .font-size-small.text-lg {
+    font-size: 1rem !important;
+  }
+  .font-size-small.text-xl {
+    font-size: 1.125rem !important;
+  }
+  .font-size-small.text-2xl {
+    font-size: 1.25rem !important;
+  }
+  .font-size-small.text-3xl {
+    font-size: 1.5rem !important;
+  }
+  .font-size-small.text-4xl {
+    font-size: 1.875rem !important;
+  }
+  .font-size-small.text-5xl {
+    font-size: 2.25rem !important;
+  }
+  .font-size-small.text-6xl {
+    font-size: 3rem !important;
+  }
+
+  .font-size-medium.text-xs {
+    font-size: 0.75rem !important;
+  }
+  .font-size-medium.text-sm {
+    font-size: 0.875rem !important;
+  }
+  .font-size-medium.text-base {
+    font-size: 1rem !important;
+  }
+  .font-size-medium.text-lg {
+    font-size: 1.125rem !important;
+  }
+  .font-size-medium.text-xl {
+    font-size: 1.25rem !important;
+  }
+  .font-size-medium.text-2xl {
+    font-size: 1.5rem !important;
+  }
+  .font-size-medium.text-3xl {
+    font-size: 1.875rem !important;
+  }
+  .font-size-medium.text-4xl {
+    font-size: 2.25rem !important;
+  }
+  .font-size-medium.text-5xl {
+    font-size: 3rem !important;
+  }
+  .font-size-medium.text-6xl {
+    font-size: 3.75rem !important;
+  }
+
+  .font-size-large.text-xs {
+    font-size: 0.875rem !important;
+  }
+  .font-size-large.text-sm {
+    font-size: 1rem !important;
+  }
+  .font-size-large.text-base {
+    font-size: 1.125rem !important;
+  }
+  .font-size-large.text-lg {
+    font-size: 1.25rem !important;
+  }
+  .font-size-large.text-xl {
+    font-size: 1.5rem !important;
+  }
+  .font-size-large.text-2xl {
+    font-size: 1.875rem !important;
+  }
+  .font-size-large.text-3xl {
+    font-size: 2.25rem !important;
+  }
+  .font-size-large.text-4xl {
+    font-size: 3rem !important;
+  }
+  .font-size-large.text-5xl {
+    font-size: 3.75rem !important;
+  }
+  .font-size-large.text-6xl {
+    font-size: 4.5rem !important;
+  }
+
   /* Responsive font size modifiers for elements without text classes */
   @media (min-width: 640px) {
     .font-size-small:not([class*="text-"]) {
       font-size: 0.875rem !important; /* text-sm */
     }
-    
+
     .font-size-medium:not([class*="text-"]) {
       font-size: 1.125rem !important; /* text-lg */
     }
-    
+
     .font-size-large:not([class*="text-"]) {
       font-size: 1.25rem !important; /* text-xl */
     }
   }
-  
+
   @media (min-width: 1024px) {
     .font-size-small:not([class*="text-"]) {
       font-size: 1rem !important; /* text-base */
     }
-    
+
     .font-size-medium:not([class*="text-"]) {
       font-size: 1.25rem !important; /* text-xl */
     }
-    
+
     .font-size-large:not([class*="text-"]) {
       font-size: 1.5rem !important; /* text-2xl */
     }

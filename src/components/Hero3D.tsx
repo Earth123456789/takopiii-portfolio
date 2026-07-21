@@ -1,12 +1,15 @@
-'use client'
+"use client";
 
-import React, { useRef, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Float, OrbitControls, Environment } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, Float, OrbitControls, Environment } from "@react-three/drei";
+import * as THREE from "three";
 
-class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error | null}> {
-  constructor(props: {children: React.ReactNode}) {
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error: Error | null }
+> {
+  constructor(props: { children: React.ReactNode }) {
     super(props);
     this.state = { hasError: false, error: null };
   }
@@ -28,7 +31,7 @@ class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasErr
 
 const Model = () => {
   // Load the model
-  const { scene } = useGLTF('/3D/scene.gltf');
+  const { scene } = useGLTF("/3D/scene.gltf");
   const groupRef = useRef<THREE.Group>(null);
 
   // Slowly rotate the model automatically
@@ -63,16 +66,16 @@ const Hero3D: React.FC = () => {
           <directionalLight position={[10, 10, 5]} intensity={1} />
           <directionalLight position={[-10, -10, -5]} intensity={0.5} />
           <Environment preset="city" />
-          
+
           <Suspense fallback={null}>
             <Model />
           </Suspense>
-          
-          <OrbitControls 
-            enableZoom={false} 
-            enablePan={false} 
-            minPolarAngle={Math.PI / 3} 
-            maxPolarAngle={Math.PI / 1.5} 
+
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 3}
+            maxPolarAngle={Math.PI / 1.5}
           />
         </Canvas>
       </ErrorBoundary>
@@ -81,6 +84,6 @@ const Hero3D: React.FC = () => {
 };
 
 // Preload the model
-useGLTF.preload('/3D/scene.gltf');
+useGLTF.preload("/3D/scene.gltf");
 
 export default Hero3D;

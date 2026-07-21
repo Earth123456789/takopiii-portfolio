@@ -3,9 +3,11 @@ export interface ActivityItem {
   period: string;
   role: string;
   description: string;
-  type: 'academic' | 'event' | 'work';
+  type: "academic" | "event" | "work";
+  featured?: boolean;
 }
 
 export interface ActivityProps {
   activityData: ActivityItem[];
+  showAll?: boolean;
 }
