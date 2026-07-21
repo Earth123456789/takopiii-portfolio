@@ -3,13 +3,13 @@ export const certificateData = [
     title: `Gosoft Hackathon 2024`,
     issuer: `Gosoft`,
     image: `/images/certificate/gosoft-hackathon.png`,
-    featured: true,
+    featured: false,
   },
   {
     title: `Nextgen Mental Health with GDGoC x AMSA Hackathon`,
     issuer: `GDGoC x AMSA`,
     image: `/images/certificate/NextgenMental_Vipat.png`,
-    featured: true,
+    featured: false,
   },
   {
     title: `Huawei Tech Essentials`,
@@ -33,7 +33,7 @@ export const certificateData = [
     title: `NTU Hackathon Participation`,
     issuer: `Nanyang Technological University (NTU)`,
     image: `/images/certificate/ntu.png`,
-    featured: true,
+    featured: false,
   },
   {
     title: `ChatGPT for Developers`,
@@ -51,10 +51,10 @@ export const certificateData = [
     title: `NDG Linux Essentials`,
     issuer: `Cisco Networking Academy`,
     image: `/images/certificate/VipatChoknantawong-NDG Linux Essent-certificate.png`,
-    featured: false,
+    featured: true,
   },
   {
-    title: `42 Bangkok Student`,
+    title: `42 Bangkok Web Fundamentals`,
     issuer: `42 Bangkok`,
     image: `/images/certificate/vchoknan@student.42bangkok.com.png`,
     featured: false,
@@ -63,7 +63,7 @@ export const certificateData = [
     title: `Python Fundamental`,
     issuer: `KDMC`,
     image: `/images/certificate/PythonFundamental_VipatChoknantawong.jpg`,
-    featured: false,
+    featured: true,
   },
   {
     title: `BorntoDev Tech Skill Academy Participation`,
@@ -71,4 +71,10 @@ export const certificateData = [
     image: `/images/certificate/borntodev-participation.png`,
     featured: false,
   },
+  {
+    title: "AI For Everyone: Understanding and Using AI in Everyday Life",
+    issuer: "42 Bangkok",
+    image: `/images/certificate/aiforeveryone_42bangkok.png`,
+    featured: true,
+  }
 ];

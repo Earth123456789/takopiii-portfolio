@@ -17,10 +17,22 @@ export const SpotifyFloatingPlayer: React.FC<SpotifyFloatingPlayerProps> = ({
   type = "playlist",
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const { activeSlide } = useSlide();
 
   // Hide floating button on Hero slide (activeSlide === 0) on XL screens where side card is pinned
   const hideOnDesktop = activeSlide === 0;
+
+  const handleToggle = () => {
+    if (!isExpanded) {
+      setIsExpanded(true);
+      setIsPlaying(true);
+    } else {
+      setIsExpanded(false);
+    }
+  };
+
+  const showNowPlaying = isPlaying || isExpanded;
 
   return (
     <div
@@ -46,7 +58,7 @@ export const SpotifyFloatingPlayer: React.FC<SpotifyFloatingPlayerProps> = ({
           </div>
           <button
             onClick={() => setIsExpanded(false)}
-            className="p-1 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors"
+            className="p-1 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors cursor-pointer"
             aria-label="Minimize Player"
           >
             <X className="w-4 h-4" />
@@ -62,17 +74,46 @@ export const SpotifyFloatingPlayer: React.FC<SpotifyFloatingPlayerProps> = ({
         />
       </div>
 
-      {/* Spotify Button (Pure Spotify Green Circle Button without Outer Ring) */}
+      {/* Spotify Button (Displays "Now Playing" badge with equalizer when music is playing) */}
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={handleToggle}
         className={cn(
-          "relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500 text-slate-950 shadow-xl hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] transition-all duration-300 hover:scale-110 active:scale-95 border-none",
-          isExpanded && "shadow-[0_0_20px_rgba(16,185,129,0.5)]",
+          "relative group flex items-center justify-center gap-2.5 rounded-full bg-emerald-500 text-slate-950 shadow-xl hover:shadow-[0_0_25px_rgba(16,185,129,0.7)] transition-all duration-300 hover:scale-105 active:scale-95 border-none select-none cursor-pointer",
+          showNowPlaying
+            ? "px-4 py-2.5 sm:px-5 sm:py-3 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.6)]"
+            : "w-12 h-12 sm:w-14 sm:h-14 rounded-full",
         )}
-        title="Spotify Music - Click to toggle Player"
+        title={
+          showNowPlaying
+            ? "Now Playing - Click to toggle player"
+            : "Spotify Music - Click to listen"
+        }
         aria-label="Toggle Spotify Music Player"
       >
-        <FaSpotify className="w-7 h-7 sm:w-8 sm:h-8 text-slate-950 group-hover:scale-110 transition-transform duration-300" />
+        <FaSpotify
+          className={cn(
+            "text-slate-950 transition-transform duration-300",
+            showNowPlaying
+              ? "w-4 h-4 sm:w-5 sm:h-5 animate-pulse"
+              : "w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110",
+          )}
+        />
+
+        {showNowPlaying && (
+          <div className="flex items-center gap-2">
+            <span className="font-extrabold text-xs sm:text-sm tracking-wide uppercase">
+              Now Playing
+            </span>
+
+            {/* Bouncing Soundwave Equalizer Bars */}
+            <div className="flex items-end gap-[3px] h-3.5 sm:h-4">
+              <span className="w-0.5 bg-slate-950 rounded-full animate-[bounce_0.8s_infinite_100ms] h-full" />
+              <span className="w-0.5 bg-slate-950 rounded-full animate-[bounce_0.8s_infinite_300ms] h-[60%]" />
+              <span className="w-0.5 bg-slate-950 rounded-full animate-[bounce_0.8s_infinite_200ms] h-[85%]" />
+              <span className="w-0.5 bg-slate-950 rounded-full animate-[bounce_0.8s_infinite_400ms] h-[40%]" />
+            </div>
+          </div>
+        )}
       </button>
     </div>
   );

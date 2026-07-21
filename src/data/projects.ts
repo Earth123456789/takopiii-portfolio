@@ -21,7 +21,7 @@ export const getProjectsData = (
     features: t("projects.ticketBever.features") as string[],
     technologies: t("projects.ticketBever.technologies") as string[],
     liveDemo: "https://github.com/MyNameTakopiii/Ticket-Bever",
-    featured: true,
+    featured: false,
   },
   {
     id: 3,

@@ -225,7 +225,7 @@
         "role": "Award",
         "description": "Won 1st Runner Up (Top 10) in the Huawei ICT Competition Thailand Round, Cloud Track.",
         "type": "event",
-        "featured": true
+        "featured": false
       },
       {
         "title": "Top 50 GOSOFT RETAIL TECH HACKATHON 2026",
