@@ -21,7 +21,7 @@ const Activity: React.FC<ActivityProps> = ({
 }) => {
   const { t } = useLanguage();
   const { getFontSizeClass } = useFontSize();
-  const [isExpanded, setIsExpanded] = useState<boolean>(showAll);
+  const [isExpanded] = useState<boolean>(showAll);
 
   const getTypeIcon = (type: string) => {
     switch (type) {

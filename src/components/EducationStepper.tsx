@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useFontSize } from "@/hooks/useFontSize";
-import { EducationItem, EducationStepperProps } from "@/types/education";
+import { EducationStepperProps } from "@/types/education";
 import { cn } from "@/lib/utils";
 import { Calendar, CheckCircle2, Sparkles, Clock, GraduationCap, Briefcase } from "lucide-react";
 import { motion } from "motion/react";

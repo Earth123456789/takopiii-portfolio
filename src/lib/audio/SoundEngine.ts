@@ -128,7 +128,7 @@ class SoundEngine {
           }
           this.isBrushPlaying = false;
         }, 60);
-      } catch (e) {
+      } catch {
         this.isBrushPlaying = false;
       }
     }
@@ -164,7 +164,7 @@ class SoundEngine {
 
       osc.start();
       osc.stop(this.ctx.currentTime + 0.08);
-    } catch (e) {}
+    } catch {}
   }
 
   /**
@@ -193,7 +193,7 @@ class SoundEngine {
 
       osc.start();
       osc.stop(this.ctx.currentTime + 0.03);
-    } catch (e) {}
+    } catch {}
   }
 
   /**
@@ -224,7 +224,7 @@ class SoundEngine {
 
         osc.start(this.ctx!.currentTime + idx * 0.04);
         osc.stop(this.ctx!.currentTime + idx * 0.04 + 0.2);
-      } catch (e) {}
+      } catch {}
     });
   }
 }

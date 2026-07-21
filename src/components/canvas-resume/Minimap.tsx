@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CanvasNodeData, ViewportState, MinimapProps } from "@/types/canvas";
+import { MinimapProps } from "@/types/canvas";
 import { Map, ChevronDown, ChevronUp } from "lucide-react";
 
 export const Minimap: React.FC<MinimapProps> = ({

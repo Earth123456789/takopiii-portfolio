@@ -12,7 +12,6 @@ import { useSlideNavigation } from "@/hooks/useSlideNavigation";
 import { slideVariants, slideTransition } from "@/lib/animations";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { ChevronDown } from "lucide-react";
-import { useLanguage } from "@/hooks/useLanguage";
 import { THEME_COLORS } from "@/data/theme";
 import { Certificate } from "@/types/ui";
 import {
@@ -25,16 +24,9 @@ import {
 } from "@/components/sections";
 
 export default function Home() {
-  const { t } = useLanguage();
   const { theme } = useTheme();
   const { activeSlide, nextSlide, prevSlide } = useSlide();
   const isDesktop = useMediaQuery("(min-width: 1280px)");
-
-  const rawScrollText = t("hero.scrollDown");
-  const displayScrollText =
-    typeof rawScrollText === "string" && rawScrollText !== "hero.scrollDown"
-      ? rawScrollText
-      : "Scroll Down to Explore";
 
   // Modal State for Certificates
   const [isModalOpen, setIsModalOpen] = useState(false);

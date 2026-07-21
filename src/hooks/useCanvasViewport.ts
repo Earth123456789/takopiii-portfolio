@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import {
-  CanvasNodeData,
   ViewportState,
   UseCanvasViewportOptions,
 } from "@/types/canvas";

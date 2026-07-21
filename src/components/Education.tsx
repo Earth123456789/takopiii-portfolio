@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import EducationStepper from "./EducationStepper";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useFontSize } from "@/hooks/useFontSize";
-import { EducationItem, BackgroundProps, TabType } from "@/types/education";
+import { BackgroundProps, TabType } from "@/types/education";
 import Link from "next/link";
 import { GraduationCap, Briefcase, Sparkles, Layers, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -18,7 +18,7 @@ const Background: React.FC<BackgroundProps> = ({
   const { t } = useLanguage();
   const { getFontSizeClass } = useFontSize();
   const [activeTab, setActiveTab] = useState<TabType>("all");
-  const [isExpanded, setIsExpanded] = useState<boolean>(showAll);
+  const [isExpanded] = useState<boolean>(showAll);
 
   const hasEducation = educationData && educationData.length > 0;
   const hasExperience = experienceData && experienceData.length > 0;

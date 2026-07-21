@@ -15,7 +15,7 @@ interface ProjectProps {
 export const Project: React.FC<ProjectProps> = ({ showAll = false }) => {
   const { t } = useLanguage();
   const { getFontSizeClass } = useFontSize();
-  const [isExpanded, setIsExpanded] = useState<boolean>(showAll);
+  const [isExpanded] = useState<boolean>(showAll);
 
   const projects = getProjectsData(t);
 

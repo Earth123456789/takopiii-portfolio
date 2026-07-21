@@ -1,4 +1,4 @@
-import { PlaygroundStroke, PlaygroundPoint } from "@/types/canvas";
+import { PlaygroundStroke } from "@/types/canvas";
 
 export class StrokeRenderer {
   public static drawStroke(

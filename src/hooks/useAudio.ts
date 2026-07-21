@@ -12,7 +12,7 @@ export function useAudio() {
         setIsMuted(muted);
         soundEngine.setMuted(muted);
       }
-    } catch (e) {}
+    } catch {}
   }, []);
 
   const toggleMute = useCallback(() => {
@@ -21,7 +21,7 @@ export function useAudio() {
       soundEngine.setMuted(next);
       try {
         localStorage.setItem("playground_muted", JSON.stringify(next));
-      } catch (e) {}
+      } catch {}
       return next;
     });
   }, []);

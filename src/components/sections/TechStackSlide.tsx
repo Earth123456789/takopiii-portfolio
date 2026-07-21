@@ -20,7 +20,7 @@ export const TechStackSlide: React.FC<TechStackSlideProps> = ({
 }) => {
   const { t } = useLanguage();
   const { getFontSizeClass } = useFontSize();
-  const [isExpanded, setIsExpanded] = useState<boolean>(showAll);
+  const [isExpanded] = useState<boolean>(showAll);
 
   return (
     <section

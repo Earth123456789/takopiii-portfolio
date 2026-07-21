@@ -11,7 +11,6 @@ import {
   Flame,
   Sticker,
   Shapes,
-  Palette,
   SunMoon,
 } from "lucide-react";
 import { PlaygroundTool, StampEmoji, ShapeType } from "@/types/canvas";

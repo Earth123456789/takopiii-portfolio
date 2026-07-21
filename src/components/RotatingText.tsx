@@ -11,10 +11,6 @@ import React, {
 import {
   motion,
   AnimatePresence,
-  Transition,
-  type VariantLabels,
-  type Target,
-  type TargetAndTransition,
 } from "motion/react";
 import { cn } from "@/lib/utils";
 import { RotatingTextRef, RotatingTextProps } from "@/types/rotatingText";

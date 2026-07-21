@@ -1,5 +1,5 @@
 import React from "react";
-import { CanvasNodeData, ToolbarProps } from "@/types/canvas";
+import { ToolbarProps } from "@/types/canvas";
 import { ZoomIn, ZoomOut, RotateCcw, Maximize2, Sparkles } from "lucide-react";
 
 export const Toolbar: React.FC<ToolbarProps> = ({

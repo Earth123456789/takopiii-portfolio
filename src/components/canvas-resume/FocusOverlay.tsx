@@ -1,5 +1,4 @@
-import React from "react";
-import { CanvasNodeData, FocusOverlayProps } from "@/types/canvas";
+import { FocusOverlayProps } from "@/types/canvas";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 
 export const FocusOverlay: React.FC<FocusOverlayProps> = ({

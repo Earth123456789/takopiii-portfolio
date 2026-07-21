@@ -155,13 +155,6 @@ const CardNav: React.FC<CardNavProps> = ({
     if (el) cardsRef.current[i] = el;
   };
 
-  const handleResumeDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/files/Resume.pdf";
-    link.download = "Resume.pdf";
-    link.click();
-  };
-
   const { isMobile, isTablet } = screenSize;
 
   if (pathname !== "/") {

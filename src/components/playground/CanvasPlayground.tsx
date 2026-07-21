@@ -4,7 +4,6 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import {
   PlaygroundTool,
   PlaygroundStroke,
-  PlaygroundPoint,
   StampEmoji,
   ShapeType,
 } from "@/types/canvas";
@@ -74,7 +73,6 @@ export const CanvasPlayground: React.FC = () => {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.restore();
 
-          const dpr = window.devicePixelRatio || 1;
           const now = Date.now();
 
           // Render finished strokes

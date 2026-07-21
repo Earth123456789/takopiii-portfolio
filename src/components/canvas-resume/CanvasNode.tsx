@@ -1,5 +1,4 @@
-import React from "react";
-import { CanvasNodeData, CanvasNodeProps } from "@/types/canvas";
+import { CanvasNodeProps } from "@/types/canvas";
 import { cn } from "@/lib/utils";
 
 export const CanvasNode: React.FC<CanvasNodeProps> = ({
