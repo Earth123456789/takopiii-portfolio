@@ -1,0 +1,26 @@
+# Node & Build Output
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Dependencies & Lockfiles
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.env*
+
+# AI Agent Skills & Assets
+.agent/
+ui-ux-pro-max-skill/
+.gemini/
+
+# Static Assets & Public Files
+public/3D/
+public/fonts/
+public/images/
+public/files/
+
+# Types & Generated files
+next-env.d.ts

@@ -14,7 +14,8 @@
     "backendDeveloper": "Backend",
     "fullStackDeveloper": "Full Stack",
     "freelancer": "Freelancer",
-    "greeting": "สวัสดี! ฉันชื่อ วิปัศย์ โชคนันทวงศ์ ชื่อเล่นคือ takopiii"
+    "greeting": "สวัสดี! ฉันชื่อ วิปัศย์ โชคนันทวงศ์ ชื่อเล่นคือ Earth",
+    "scrollDown": "เลื่อนลงเพื่อสำรวจเพิ่มเติม"
   },
   "education": {
     "title": "การศึกษาของฉัน",
@@ -83,12 +84,7 @@
         "การเลือกท่าและการฝึกในโหมดต่างๆ",
         "การติดตามความก้าวหน้าและการวิเคราะห์การปรับปรุง"
       ],
-      "technologies": [
-        "Next.js",
-        "Tailwind CSS",
-        "FastAPI",
-        "Python"
-      ],
+      "technologies": ["Next.js", "Tailwind CSS", "FastAPI", "Python"],
       "demo": "Demo"
     },
     "ticketBever": {
@@ -101,12 +97,7 @@
         "การประมวลผลการชำระเงินที่ปลอดภัยด้วย PromptPay (ไลบรารี Python)",
         "สร้างด้วย Django เพื่อรองรับระบบหลังบ้านที่ปรับขนาดได้"
       ],
-      "technologies": [
-        "Django",
-        "Tailwind CSS",
-        "Google API",
-        "Chart.js"
-      ],
+      "technologies": ["Django", "Tailwind CSS", "Google API", "Chart.js"],
       "demo": "Demo"
     },
     "safeJai": {
@@ -120,12 +111,7 @@
         "การรวม API ที่ราบรื่นกับการทำงานร่วมกับทีมหลังบ้าน",
         "การทดสอบอย่างละเอียดเพื่อประสิทธิภาพและความน่าเชื่อถือของระบบ"
       ],
-      "technologies": [
-        "Next.js",
-        "Tailwind CSS",
-        "Scss",
-        "next-i18next"
-      ],
+      "technologies": ["Next.js", "Tailwind CSS", "Scss", "next-i18next"],
       "demo": "Demo"
     },
     "openhouse": {
@@ -139,12 +125,7 @@
         "ปรับใช้บน Vercel เพื่อการโฮสต์ที่รวดเร็วและเชื่อถือได้",
         "ออกแบบเป็นแพลตฟอร์มกิจกรรมแบบโต้ตอบสำหรับผู้เรียนมัธยมปลาย"
       ],
-      "technologies": [
-        "Next.js",
-        "Tailwind CSS",
-        "Shadcn",
-        "Zod"
-      ],
+      "technologies": ["Next.js", "Tailwind CSS", "Shadcn", "Zod"],
       "demo": "Demo"
     },
     "dsView": {
@@ -203,69 +184,91 @@
         "period": "มกราคม 2026 – ปัจจุบัน",
         "role": "Internship Web Developer",
         "description": "พัฒนาบริการ Windows สำหรับตรวจสอบสถานะและสุขภาพของบริการแบบเรียลไทม์ | ดูแลและปรับปรุงฟีเจอร์ภายในระบบ TMS (Transportation Management System) โดยใช้ .NET และ Ext.js | สร้าง POC สำหรับ Open Claw เพื่อสำรวจความสามารถของระบบและรูปแบบการรวมเข้าด้วยกัน",
-        "type": "work"
+        "type": "work",
+        "featured": true
       },
       {
         "title": "ผู้ช่วยสอน (TA) - Data Structure & Algorithm",
         "period": "พฤศจิกายน 2025 – มีนาคม 2026",
         "role": "ผู้ช่วยสอน",
         "description": "ตรวจงานและให้คะแนนพร้อมคำแนะนำเชิงลึกเกี่ยวกับ Data Structure & Algorithm ในห้อง Lab (โค้ด Python) และคลาสแบบฝึกหัด",
-        "type": "academic"
+        "type": "academic",
+        "featured": true
       },
       {
         "title": "Frontend Developer (บริษัท เอ็ดไวซอรี่ จำกัด)",
         "period": "เมษายน 2025 - กรกฎาคม 2025",
         "role": "Internship Frontend Developer",
         "description": "พัฒนาและออกแบบระบบแปลภาษา (i18n) สำหรับเว็บไซต์ เพื่อรองรับการใช้งานหลายภาษา (ไทย / อังกฤษ) โดยใช้ Next.js และ next-i18next สำหรับจัดการคำแปล | ใช้ Tailwind CSS และ SCSS สำหรับการจัดการ UI/UX ให้รองรับ Responsive Design และสอดคล้องกับดีไซน์หลักขององค์กร",
-        "type": "work"
+        "type": "work",
+        "featured": true
       },
       {
         "title": "ผู้ช่วยสอน (TA) - NoSQL Databases",
         "period": "พฤศจิกายน 2024 – มีนาคม 2025",
         "role": "ผู้ช่วยสอน",
         "description": "ตรวจการบ้านและมอบคะแนน พร้อมแนะแนวทางศึกษา NoSQL เช่น MongoDB, Cassandra และ Neo4j",
-        "type": "academic"
+        "type": "academic",
+        "featured": false
       },
       {
         "title": "ผู้ช่วยสอน (TA) - Database System Concepts",
         "period": "กรกฎาคม 2024 – พฤศจิกายน 2024",
         "role": "ผู้ช่วยสอน",
         "description": "ตรวจการบ้านและมอบหมายคะแนน พร้อม Feedback เพื่อพัฒนาทักษะการเขียน Query (SQL)",
-        "type": "academic"
+        "type": "academic",
+        "featured": false
       },
       {
         "title": "Top 10 Huawei ICT Competition 2024-2025 Cloud Track National Round",
         "period": "2024 - 2025",
         "role": "Award",
         "description": "ได้รับรางวัลรองอันดับ 1 (Top 10) ในการแข่งขัน Huawei ICT รอบระดับประเทศ สาย Cloud Track",
-        "type": "event"
+        "type": "event",
+        "featured": true
       },
       {
         "title": "Top 50 GOSOFT RETAIL TECH HACKATHON 2026",
         "period": "มกราคม 2026",
         "role": "Finalist",
         "description": "ได้เข้ารอบ 50 ทีมสุดท้ายในการแข่งขัน GOSOFT RETAIL TECH HACKATHON 2026",
-        "type": "event"
+        "type": "event",
+        "featured": false
       },
       {
         "title": "Top 10 in Nextgen Mental Health with GDGoC x AMSA Hackathon",
         "period": "2024",
         "role": "Award",
         "description": "เข้าร่วมการแข่งขันและได้รับรางวัล Top 10 ในหัวข้อ Nextgen Mental Health โดยได้นำเสนอไอเดียและพัฒนาระบบที่ประยุกต์ใช้เทคโนโลยี AI เพื่อช่วยเหลือและดูแลผู้ป่วยที่มีปัญหาทางสุขภาพจิต มุ่งเน้นนวัตกรรมที่ช่วยแก้ปัญหาอย่างยั่งยืนและสามารถเข้าถึงได้ง่าย",
-        "type": "event"
+        "type": "event",
+        "featured": false
       },
       {
         "title": "NTU Hackathon Certificate",
         "period": "2024",
         "role": "Certificate",
         "description": "เข้าร่วมการแข่งขันและได้พัฒนาเกมแบบโต้ตอบ (Interactive Game) ที่ออกแบบมาเพื่อสนับสนุนการทำกายภาพบำบัดสำหรับผู้ป่วยโรคลมแดด (Heatstroke) โดยนำหลักการ Gamification มาประยุกต์ใช้ เพื่อให้การบริหารเท้ามีความน่าสนใจ สนุกสนาน และสร้างแรงจูงใจให้ผู้ป่วยสามารถทำกายภาพบำบัดได้อย่างต่อเนื่องและมีประสิทธิภาพ",
-        "type": "event"
+        "type": "event",
+        "featured": false
       }
     ]
   },
   "common": {
     "demo": "Demo",
     "resume": "Resume",
-    "myResume": "Resume ของฉัน"
+    "myResume": "Resume ของฉัน",
+    "seeAll": "ดูทั้งหมด",
+    "showLess": "แสดงน้อยลง",
+    "featured": "ไฮไลต์"
+  },
+  "footer": {
+    "name": "วิปัศย์ โชคนันทวงศ์",
+    "role": "Full Stack Developer & Freelancer",
+    "description": "หลงใหลในการสร้างสรรค์โซลูชันนวัตกรรมและทำให้ไอเดียเป็นจริงด้วยเทคโนโลยี",
+    "quickLinks": "ลิงก์ด่วน",
+    "contact": "ติดต่อ",
+    "followMe": "ติดตามฉัน",
+    "copyright": "© 2024 วิปัศย์ โชคนันทวงศ์ สงวนลิขสิทธิ์ทั้งหมด",
+    "madeWith": "สร้างด้วย ❤️ โดยใช้ Next.js & Tailwind CSS"
   }
 }

@@ -1,115 +1,202 @@
-'use client'
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { useFontSize } from '@/hooks/useFontSize';
-import { EducationItem } from '@/types/education';
-import { cn } from '@/lib/utils';
+import React from "react";
+import Image from "next/image";
+import { useFontSize } from "@/hooks/useFontSize";
+import { EducationItem, EducationStepperProps } from "@/types/education";
+import { cn } from "@/lib/utils";
+import { Calendar, CheckCircle2, Sparkles, Clock, GraduationCap, Briefcase } from "lucide-react";
+import { motion } from "motion/react";
 
-interface EducationStepperProps {
-  items: EducationItem[];
-}
-
-const EducationStepper: React.FC<EducationStepperProps> = ({ items }) => {
+const EducationStepper: React.FC<EducationStepperProps> = ({
+  items,
+  type = "education",
+  limitFeatured = false,
+}) => {
   const { getFontSizeClass } = useFontSize();
 
+  const displayedItems = limitFeatured
+    ? items.filter((item) => item.featured !== false)
+    : items;
+
   const getStatusConfig = (status?: string) => {
-    const s = status?.toLowerCase() || '';
-    if (s.includes('success') || s.includes('สำเร็จ') || s.includes('graduated')) {
+    const s = status?.toLowerCase() || "";
+    if (
+      s.includes("success") ||
+      s.includes("สำเร็จ") ||
+      s.includes("graduated") ||
+      s.includes("completed")
+    ) {
       return {
-        borderColor: 'border-green-500',
-        shadowColor: 'group-hover:shadow-green-500/50',
-        pulseColor: 'bg-green-500',
-        textColor: 'text-green-400',
-        isCompleted: true
+        dotBg: "bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.5)]",
+        badgeStyle: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+        icon: <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />,
+        label: status,
+        isCurrent: false,
       };
     }
-    if (s.includes('in progress') || s.includes('กำลังศึกษา')) {
+    if (
+      s.includes("in progress") ||
+      s.includes("กำลังศึกษา") ||
+      s.includes("current")
+    ) {
       return {
-        borderColor: 'border-yellow-500',
-        shadowColor: 'group-hover:shadow-yellow-500/50',
-        pulseColor: 'bg-yellow-500',
-        textColor: 'text-yellow-400',
-        isCompleted: true // Set to true because user wants it to look like graduated (static)
+        dotBg: "bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.6)]",
+        badgeStyle: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30",
+        icon: <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />,
+        label: status,
+        isCurrent: true,
       };
     }
     return {
-      borderColor: 'border-primary dark:border-[#A91D3A]',
-      shadowColor: 'group-hover:shadow-primary/50 dark:group-hover:shadow-[#A91D3A]/50',
-      pulseColor: 'bg-primary dark:bg-[#A91D3A]',
-      textColor: 'text-primary dark:text-[#ff9cb0]',
-      isCompleted: false
+      dotBg: "bg-primary dark:bg-[#A91D3A] shadow-[0_0_12px_rgba(169,29,58,0.5)]",
+      badgeStyle:
+        "bg-primary/10 dark:bg-[#A91D3A]/10 text-primary dark:text-[#ff9cb0] border-primary/30 dark:border-[#A91D3A]/30",
+      icon: <Clock className="w-3.5 h-3.5" />,
+      label: status,
+      isCurrent: false,
     };
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -16, y: 10 },
+    show: { opacity: 1, x: 0, y: 0, transition: { duration: 0.4 } },
+  };
+
   return (
-    <div className="relative">
-      <div className="absolute left-[1.35rem] sm:left-8 top-0 bottom-0 w-1 sm:w-1.5 bg-foreground/20"></div>
-      
-      <div className="space-y-8">
-        {items.map((item, index) => {
-          const statusConfig = getStatusConfig(item.status);
-          
-          return (
-            <div key={index} className="relative flex items-start gap-3 sm:gap-6 group">
-              {/* Timeline dot */}
-              <div className="relative z-10 flex-shrink-0">
-                <div className={cn(
-                  "w-11 h-11 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#0f172a] to-[#334155] border-2 flex items-center justify-center shadow-lg transition-all duration-300",
-                  statusConfig.borderColor,
-                  statusConfig.shadowColor
-                )}>
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-white/20">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="show"
+      className="relative pl-8 sm:pl-10 space-y-6 sm:space-y-8 py-2"
+    >
+      {/* Glowing Vertical Timeline Track */}
+      <div className="absolute left-3 sm:left-4 top-4 bottom-4 w-1 -translate-x-1/2 bg-gradient-to-b from-primary via-indigo-500/60 to-emerald-500/40 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.2)]" />
+
+      {displayedItems.map((item, index) => {
+        const statusConfig = getStatusConfig(item.status);
+        // Check if detail has bullet points formatted with '|'
+        const detailBullets = item.detail.includes("|")
+          ? item.detail.split("|").map((b) => b.trim()).filter(Boolean)
+          : null;
+
+        return (
+          <motion.div key={index} variants={itemVariants} className="relative group">
+            {/* Timeline Dot (Node Bullet) */}
+            <div
+              className={cn(
+                "absolute left-3 sm:left-4 top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-background dark:border-slate-950 flex items-center justify-center z-10 transition-all duration-300 group-hover:scale-125",
+                statusConfig.dotBg,
+              )}
+            >
+              {statusConfig.isCurrent && (
+                <span className="absolute inset-0 rounded-full bg-amber-400 opacity-75 animate-ping" />
+              )}
+              <div className="w-2 h-2 rounded-full bg-white shadow-inner" />
+            </div>
+
+            {/* Resume Card Container */}
+            <div className="relative rounded-2xl p-5 sm:p-6 bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-sm hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-[#A91D3A]/10 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              {/* Card Top Edge Specular Sheen */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 dark:via-white/20 to-transparent" />
+
+              {/* Hover Ambient Gradient Backdrop */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+                {/* Logo Badge Container */}
+                <div className="relative flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white dark:bg-white/10 p-2 sm:p-2.5 border border-slate-200/80 dark:border-white/10 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300">
+                  {item.image ? (
                     <Image
                       src={item.image}
                       alt={item.title}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
+                      width={52}
+                      height={52}
+                      className="w-full h-full object-contain rounded-xl"
                     />
-                  </div>
+                  ) : type === "education" ? (
+                    <GraduationCap className="w-7 h-7 text-primary dark:text-[#ff9cb0]" />
+                  ) : (
+                    <Briefcase className="w-7 h-7 text-indigo-500 dark:text-indigo-400" />
+                  )}
                 </div>
-                {/* Pulse effect */}
-                {!statusConfig.isCompleted && (
-                  <div className={cn(
-                    "absolute inset-0 rounded-full animate-ping opacity-20",
-                    statusConfig.pulseColor
-                  )}></div>
-                )}
-              </div>
 
-              {/* Content */}
-              <div className="flex-1 min-w-0 bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10 group-hover:border-white/20 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/20 dark:group-hover:shadow-[#A91D3A]/20">
-                <div className="flex flex-col gap-1 sm:gap-2 mb-2 sm:mb-3">
-                  <h3 className={getFontSizeClass("text-foreground text-base sm:text-xl lg:text-2xl font-semibold group-hover:text-primary dark:group-hover:text-[#ff9cb0] transition-colors duration-300 leading-tight break-words")}>
-                    {item.title}
-                  </h3>
-                  <span className={getFontSizeClass("text-foreground/80 font-medium text-sm sm:text-base lg:text-lg")}>
-                    {item.period}
-                  </span>
-                </div>
-                <p className={getFontSizeClass("text-foreground/70 text-sm sm:text-base leading-relaxed")}>
-                  {item.detail}
-                </p>
-                
-                {item.status && (
-                  <div className="flex items-center gap-2 mt-3">
-                    <div className={cn(
-                      "w-3 h-3 rounded-full shadow-lg",
-                      statusConfig.pulseColor,
-                      statusConfig.shadowColor.replace('group-hover:', '')
-                    )}></div>
-                    <span className={getFontSizeClass(cn("text-sm font-medium", statusConfig.textColor))}>
-                      {item.status}
+                {/* Content Section */}
+                <div className="flex-1 min-w-0 space-y-2.5">
+                  {/* Badges Panel */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    {/* Period Badge */}
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-zinc-300 border border-slate-200/80 dark:border-white/10 shadow-2xs">
+                      <Calendar className="w-3.5 h-3.5 text-slate-500 dark:text-zinc-400" />
+                      {item.period}
                     </span>
+
+                    {/* Status Badge */}
+                    {item.status && (
+                      <span
+                        className={cn(
+                          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border shadow-2xs",
+                          statusConfig.badgeStyle,
+                        )}
+                      >
+                        {statusConfig.icon}
+                        {statusConfig.label}
+                      </span>
+                    )}
                   </div>
-                )}
+
+                  {/* Title */}
+                  <h4
+                    className={cn(
+                      getFontSizeClass(
+                        "text-base sm:text-lg lg:text-xl font-bold leading-snug text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-[#ff9cb0] transition-colors duration-300 break-words",
+                      ),
+                    )}
+                  >
+                    {item.title}
+                  </h4>
+
+                  {/* Details */}
+                  {detailBullets ? (
+                    <ul className="space-y-1.5 pt-1">
+                      {detailBullets.map((bullet, idx) => (
+                        <li
+                          key={idx}
+                          className={getFontSizeClass(
+                            "flex items-start gap-2 text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed",
+                          )}
+                        >
+                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary/60 dark:bg-[#ff9cb0]/60 mt-2 shrink-0" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p
+                      className={getFontSizeClass(
+                        "text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed pt-0.5",
+                      )}
+                    >
+                      {item.detail}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </motion.div>
+        );
+      })}
+    </motion.div>
   );
 };
 

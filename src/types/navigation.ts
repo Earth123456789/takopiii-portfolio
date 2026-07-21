@@ -38,10 +38,17 @@ export interface NavCardProps {
 }
 
 export interface CTAButtonProps {
-  onClick: () => void;
-  text: string;
+  onClick?: () => void;
+  text?: string;
   isTablet: boolean;
   isMobile: boolean;
   bgColor?: string;
   textColor?: string;
+}
+
+export interface UseSlideNavigationOptions {
+  activeSlide: number;
+  nextSlide: () => void;
+  prevSlide: () => void;
+  throttleMs?: number;
 }
