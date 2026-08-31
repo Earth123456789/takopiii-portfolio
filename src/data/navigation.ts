@@ -38,6 +38,11 @@ export const getNavigationData = (
         href: "#activity",
         ariaLabel: "About Activities",
       },
+      {
+        label: t("navigation.contact") as string,
+        href: "#contact",
+        ariaLabel: "About Contact",
+      },
     ],
   },
   {
@@ -47,7 +52,7 @@ export const getNavigationData = (
     links: [
       {
         label: "Email",
-        href: "mailto:vipat.choknantawong@gmail.com",
+        href: "mailto:choknantawongvipat@gmail.com",
         ariaLabel: "Send email",
       },
       {

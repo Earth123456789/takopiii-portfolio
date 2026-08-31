@@ -5,6 +5,9 @@ export interface ProjectItem {
   image: string;
   features: string[];
   technologies: string[];
-  liveDemo: string;
+  github?: string;
+  liveDemo?: string;
+  demoVideo?: string;
   featured?: boolean;
 }
+

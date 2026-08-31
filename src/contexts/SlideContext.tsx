@@ -7,7 +7,7 @@ const SlideContext = createContext<SlideContextType | undefined>(undefined);
 
 export const SlideProvider: React.FC<SlideProviderProps> = ({ children }) => {
   const [activeSlide, setActiveSlideState] = useState<number>(0);
-  const totalSlides = 6; // 0: About, 1: Education/Experience, 2: Tech Stack, 3: Projects, 4: Certificates, 5: Activities
+  const totalSlides = 7; // 0: About, 1: Education/Experience, 2: Tech Stack, 3: Projects, 4: Certificates, 5: Activities, 6: Contact & Footer
 
   const setActiveSlide = (index: number) => {
     if (index >= 0 && index < totalSlides) {

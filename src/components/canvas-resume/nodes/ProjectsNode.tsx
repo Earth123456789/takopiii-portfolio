@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useFontSize } from "@/hooks/useFontSize";
 import { getProjectsData } from "@/data/projects";
-import { FolderGit2, ExternalLink } from "lucide-react";
+import { FolderGit2, ExternalLink, Github, PlayCircle } from "lucide-react";
 import Image from "next/image";
 
 export const ProjectsNode: React.FC = () => {
@@ -49,16 +49,41 @@ export const ProjectsNode: React.FC = () => {
                 >
                   {proj.title}
                 </h3>
-                {proj.liveDemo && (
-                  <a
-                    href={proj.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1 rounded bg-slate-200 dark:bg-white/5 hover:bg-blue-600 text-slate-700 dark:text-zinc-300 hover:text-white transition-colors"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                )}
+                <div className="flex items-center gap-1.5 flex-shrink-0">
+                  {proj.github && (
+                    <a
+                      href={proj.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="GitHub Repository"
+                      className="p-1 rounded bg-slate-200 dark:bg-white/5 hover:bg-slate-800 hover:text-white text-slate-700 dark:text-zinc-300 transition-colors"
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {proj.liveDemo && (
+                    <a
+                      href={proj.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Live Demo"
+                      className="p-1 rounded bg-slate-200 dark:bg-white/5 hover:bg-blue-600 hover:text-white text-slate-700 dark:text-zinc-300 transition-colors"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {proj.demoVideo && (
+                    <a
+                      href={proj.demoVideo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Demo Video"
+                      className="p-1 rounded bg-slate-200 dark:bg-white/5 hover:bg-red-600 hover:text-white text-slate-700 dark:text-zinc-300 transition-colors"
+                    >
+                      <PlayCircle className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
               </div>
 
               <p
