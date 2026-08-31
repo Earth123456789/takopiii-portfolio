@@ -21,6 +21,7 @@ import {
   ProjectsSlide,
   CertificatesSlide,
   ActivitySlide,
+  FooterSlide,
 } from "@/components/sections";
 
 export default function Home() {
@@ -69,6 +70,8 @@ export default function Home() {
         return <CertificatesSlide onOpenModal={openModal} />;
       case 5:
         return <ActivitySlide />;
+      case 6:
+        return <FooterSlide />;
       default:
         return null;
     }
@@ -137,7 +140,7 @@ export default function Home() {
 
       {/* Floating Bottom Scroll Down Arrow Icon (Visible until reaching the last slide) */}
       <AnimatePresence>
-        {activeSlide < 5 && (
+        {activeSlide < 6 && (
           <motion.button
             initial={{ opacity: 0, scale: 0.8, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

@@ -75,30 +75,110 @@
   "projects": {
     "title": "All My Projects",
     "description": "Showcasing my work and the technologies I've mastered through real-world projects.",
-    "eyeYoga": {
-      "title": "Eye Yoga",
-      "description": "A system that detects and evaluates posture correctness through a webcam using Human Pose Estimation techniques (MediaPipe, MoveNet, TensorFlow). Users can select a pose they want to practice, and the system will display a reference pose and assess their performance in real time, providing accuracy scores and progress tracking for continuous improvement.",
+    "incanTerraceFlow": {
+      "title": "IncanTerraceFlow",
+      "description": "Built a C# (.NET / Windows Forms) simulator for Tech Tournament Bangkok Bank #2 that models water flowing across a grid of Incan terraces, splitting flow proportionally by slope and tracking coverage and water loss.",
       "features": [
-        "Real-time pose detection using MediaPipe and TensorFlow",
-        "Accuracy scoring and performance evaluation",
-        "Multiple pose selection and practice modes",
-        "Progress tracking and improvement analytics"
+        "Built a C# (.NET / Windows Forms) simulator for Tech Tournament Bangkok Bank #2",
+        "Models water flowing across a grid of Incan terraces, splitting flow proportionally by slope",
+        "Implemented a BFS-based propagation engine with a 'tortoise' mechanic to break walls and unblock flow",
+        "Brute-force search algorithm to find the optimal starting column, backed by unit tests"
       ],
-      "technologies": ["Next.js", "Tailwind CSS", "FastAPI", "Python"],
-      "demo": "Demo"
+      "technologies": ["C#", ".NET", "Windows Forms", "Algorithms", "Unit Testing"]
     },
     "ticketBever": {
-      "title": "Ticker Bever",
-      "description": "A ticket booking and management system built with Django, featuring a modern and responsive UI powered by Tailwind CSS. The platform integrates Google API for authentication and chatbot functionality, provides analytical dashboards using Chart.js, and supports secure payment processing with PromptPay via Python library.",
+      "title": "Ticket Bever",
+      "description": "An activity reservation and ticket booking web app built with Django and Tailwind CSS. Features Gemini API integration for intelligent assistance and PromptPay payment support.",
       "features": [
-        "User authentication and chatbot integration using Google API",
-        "Modern and responsive interface with Tailwind CSS",
-        "Interactive dashboards and data visualization using Chart.js",
-        "Secure payment processing with PromptPay (Python library)",
-        "Built with Django for scalable backend support"
+        "Activity reservation and ticket booking workflow with intuitive interface",
+        "Gemini API integration for AI assistant and chatbot functionality",
+        "Interactive analytics dashboards and data visualization with Chart.js",
+        "Secure payment processing with PromptPay via Python library",
+        "Scalable backend architecture powered by Django and PostgreSQL"
       ],
-      "technologies": ["Django", "Tailwind CSS", "Google API", "Chart.js"],
-      "demo": "Demo"
+      "technologies": ["Django", "JavaScript", "Tailwind CSS", "PostgreSQL", "Gemini API"]
+    },
+    "khonsongDee": {
+      "title": "Khonsong Dee",
+      "description": "Transportation tracking & fleet-management web application. Developed with FastAPI and microservices architecture, supporting real-time route monitoring and dispatch management.",
+      "features": [
+        "Real-time transportation tracking and fleet dispatch management",
+        "Reverse proxy and API gateway routing with Traefik",
+        "Microservices architecture with FastAPI, Nest.js, Express, and RabbitMQ",
+        "High-performance dual database system using MongoDB and PostgreSQL"
+      ],
+      "technologies": [
+        "FastAPI",
+        "Traefik",
+        "Nest.js",
+        "Express",
+        "Next.js",
+        "MongoDB",
+        "PostgreSQL",
+        "RabbitMQ"
+      ]
+    },
+    "eyeYoga": {
+      "title": "Eye Yoga",
+      "description": "Online yoga exercise app with ML-powered pose estimation (MediaPipe & MoveNet) in real-time, providing accuracy feedback and analytics.",
+      "features": [
+        "Real-time pose detection and accuracy evaluation using TensorFlow and MediaPipe",
+        "Dynamic reference posture overlay and pose practice modes",
+        "Progress tracking and performance analytics for continuous improvement",
+        "FastAPI backend and responsive Next.js frontend"
+      ],
+      "technologies": ["FastAPI", "Next.js", "TensorFlow", "MediaPipe", "Python", "Tailwind CSS"]
+    },
+    "hunsaSalon": {
+      "title": "Hunsa Salon",
+      "description": "Salon reservation platform with automated CI/CD pipeline and cloud deployment on AWS EC2.",
+      "features": [
+        "Online salon appointment booking and service scheduling",
+        "Automated CI/CD deployment pipeline with Jenkins and Docker",
+        "Scalable cloud infrastructure deployed on AWS EC2",
+        "Responsive modern user interface built with React and Tailwind CSS"
+      ],
+      "technologies": ["React", "Express", "Jenkins", "AWS EC2", "Docker", "Tailwind CSS"]
+    },
+    "dsView": {
+      "title": "DSView",
+      "description": "Interactive data-structure visualizer for KMITL students. Shows Python code execution and animated structure operations in a playground.",
+      "features": [
+        "Real-time data structure animation and operation visualization",
+        "Live in-browser Python code execution playground",
+        "Interactive controls for stepping through algorithms",
+        "Scalable file and object storage management using MinIO and PostgreSQL"
+      ],
+      "technologies": [
+        "Next.js",
+        "TanStack",
+        "Fiber",
+        "FastAPI",
+        "MinIO",
+        "PostgreSQL"
+      ]
+    },
+    "seniorLink": {
+      "title": "SeniorLink",
+      "description": "Part-time job platform for elderly job seekers connecting senior workers with companies hiring for flexible roles, featuring application tracking and matching.",
+      "features": [
+        "Job search and matching tailored for senior job seekers",
+        "Online application submission and real-time application-status tracking",
+        "Employer portal for posting part-time listings and candidate reviews",
+        "Containerized deployment with Docker and Jenkins CI/CD pipeline"
+      ],
+      "technologies": ["React", "Django", "PostgreSQL", "Docker", "Jenkins"]
+    },
+    "jonkFoodIT": {
+      "title": "Jonk-Food-IT",
+      "description": "Food-ordering web app developed for KMITL Database course project, featuring menu management, cart checkout, and relational database schema.",
+      "features": [
+        "Online food ordering, menu exploration, and cart checkout system",
+        "Relational database design with optimized SQL queries and constraints",
+        "Order history and status tracking dashboard",
+        "Express backend integration with dynamic JavaScript frontend"
+      ],
+      "technologies": ["HTML", "CSS", "JavaScript", "Express", "MySQL"]
     },
     "safeJai": {
       "title": "Safe Jai (Internship)",
@@ -111,8 +191,7 @@
         "Seamless API integration with backend team collaboration",
         "Thorough testing for system efficiency and reliability"
       ],
-      "technologies": ["Next.js", "Tailwind CSS", "Scss", "next-i18next"],
-      "demo": "Demo"
+      "technologies": ["Next.js", "Tailwind CSS", "Scss", "next-i18next"]
     },
     "openhouse": {
       "title": "Openhouse 2024",
@@ -125,46 +204,7 @@
         "Deployed on Vercel for fast and reliable hosting",
         "Designed as an interactive activity platform for high school students"
       ],
-      "technologies": ["Next.js", "Tailwind CSS", "Shadcn", "Zod"],
-      "demo": "Demo"
-    },
-    "dsView": {
-      "title": "DSView",
-      "description": "Interactive data-structure visualizer for KMITL IT students. Shows Python code execution and animated structure operations in a playground, helping students understand algorithms better.",
-      "features": [
-        "Real-time data structure animation",
-        "In-browser Python code execution support",
-        "Interactive playground for structure manipulation",
-        "File and storage management using MinIO"
-      ],
-      "technologies": [
-        "Next.js",
-        "TanStack",
-        "Fiber",
-        "FastAPI",
-        "MinIO",
-        "PostgreSQL"
-      ],
-      "demo": "Demo"
-    },
-    "khonsongDee": {
-      "title": "Khonsong Dee",
-      "description": "Transportation tracking and fleet-management system. Developed with FastAPI and microservices architecture, supporting real-time tracking and fleet data management via a modern dashboard.",
-      "features": [
-        "Real-time transportation tracking",
-        "Fleet and dispatch management system",
-        "Routing management with Traefik",
-        "Scalable microservices architecture"
-      ],
-      "technologies": [
-        "FastAPI",
-        "Traefik",
-        "Next.js",
-        "MongoDB",
-        "PostgreSQL",
-        "RabbitMQ"
-      ],
-      "demo": "Demo"
+      "technologies": ["Next.js", "Tailwind CSS", "Shadcn", "Zod"]
     }
   },
   "comingSoon": {
@@ -255,6 +295,9 @@
   },
   "common": {
     "demo": "Demo",
+    "liveDemo": "Live Demo",
+    "demoVideo": "Demo Video",
+    "github": "GitHub",
     "resume": "Resume",
     "myResume": "My Resume",
     "seeAll": "See All",
@@ -264,11 +307,17 @@
   "footer": {
     "name": "Vipat Choknantawong",
     "role": "Full Stack Developer & Freelancer",
+    "heading": "Get In Touch",
+    "subheading": "Let's build something exceptional together.",
+    "intro": "Feel free to reach out for opportunities, collaborations, or tech discussions.",
     "description": "Passionate about creating innovative solutions and bringing ideas to life through technology.",
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "followMe": "Follow Me",
-    "copyright": "© 2024 Vipat Choknantawong. All rights reserved.",
+    "location": "Bangkok, Thailand",
+    "available": "Available for opportunities",
+    "backToTop": "Back to Top",
+    "copyright": "© 2026 Vipat Choknantawong. All rights reserved.",
     "madeWith": "Made with ❤️ using Next.js & Tailwind CSS"
   }
 }

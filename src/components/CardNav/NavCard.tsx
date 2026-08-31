@@ -13,6 +13,7 @@ const hashToSlideIndex: Record<string, number> = {
   "#project": 3,
   "#certificates": 4,
   "#activity": 5,
+  "#contact": 6,
 };
 
 export const NavCard: React.FC<NavCardProps> = ({
